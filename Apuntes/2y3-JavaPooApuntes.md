@@ -237,6 +237,18 @@ Ventaja
 
 </br>
 
+##### Método statico
+
+El método estático en Java es un método que pertenece a la clase y no al objeto. Un método estático solo puede acceder a datos estáticos.
+
+- Es un método que pertenece a la clase y no al objeto (instancia)
+- Un método estático solo puede acceder a datos estáticos. No puede acceder a datos no estáticos (variables de instancia)
+- Un método estático puede llamar solo a otros métodos estáticos y no puede invocar un método no estático a partir de él.
+- Un método estático se puede acceder directamente por el nombre de la clase y no necesita ningún objeto
+- Un método estático no puede hacer referencia a “este” o “super” palabras clave de todos modos
+
+</br>
+
 ## 3. Herencia
 
 ### Herencia
@@ -401,6 +413,7 @@ En Java, rara vez usamos Upcasting . Lo usamos cuando necesitamos desarrollar un
 </br>
 
 **Sobrecarga de métodos**
+
 La sobrecarga de métodos es la creación de varios métodos con el mismo nombre pero con diferente lista de tipos de parámetros.
 
 Java diferencia los métodos sobrecargados con base en el número y tipo de parámetros o argumentos que tiene el método y no por el tipo que devuelve.
@@ -454,6 +467,7 @@ Tambien existe la sobrecarga de constructores: Cuando en una clase existen const
 ```
 
 **Sobreescritura de métodos**
+
 Una subclase hereda todos los métodos de su superclase que son accesibles a dicha subclase a menos que la subclase sobreescriba los métodos.
 
 Una subclase sobreescribe un método de su superclase cuando define un método con las mismas características ( nombre, número y tipo de argumentos) que el método de la superclase.
@@ -528,7 +542,7 @@ Cuando de crea una clase abstracta con la palabra reservada `abstract` esta no s
         }
 ```
 
-- La clase abstracta puede o no incluir métodod abstractos.
+- La clase abstracta puede o no incluir métodos abstractos.
 - Se pueden crear subclases, al nosotros heredar de una clase abstracta es obligatorio implementar sus métodos abstractos, es decir debemos definir comportamiento, definir cómo se va a realizar la tarea.
 
 ## Método abstracto
@@ -552,7 +566,7 @@ _**Nota:** Es obligatorio usar y definir el método abstracto de una clase padre
 
 ## Interfaces
 
-Una interface es una variante de una clase abstracta con la condición de que todos sus métodos deben ser asbtractos, puede o no usarse las palabras reservadas en los metodos aunque no es necesario, por default son abastractas (Todos los metodos con abstractas)
+Una interface es una variante de una clase abstracta con la condición de que todos sus métodos deben ser asbtractos, puede o no usarse las palabras reservadas en los metodos aunque no es necesario, por default son abastractas (Todos los metodos son abstractas)
 
 - No puede tener metodos implementados, no puede  tener métodos con cuerpo
 - No puede tener atributos privados (No se pueden acceder a ellos porque no hay cuerpo en los métodos y es inaccesible desde otra forma del código).
@@ -608,12 +622,12 @@ Si la interface va a tener atributos, éstos deben llevar las palabras reservada
 > Nota:
 > La clase que implementa una interface tiene dos opciones:
 >
-> 1) Implementar todos los métodos de la interface.
-> 2) Implementar sólo algunos de los métodos de la interface pero esa clase debe ser una clase abstracta (debe declararse con la palabra abstract).
+> 1. Implementar todos los métodos de la interface.
+> 2. Implementar sólo algunos de los métodos de la interface pero esa clase debe ser una clase abstracta (debe declararse con la palabra abstract).
 
 </br>
 
-| Interfaz                                                                             | Clse Abstracta                                               |
+| Interfaz                                                                             | Clase Abstracta                                               |
 |:------------------------------------------------------------------------------------:|:------------------------------------------------------------:|
 | Palabra clave: __implements__                                                        | Palabra clave: __extends__                                   |
 | La intefaz admite herencia múltiple                                                  | La clase abstracta no admite herencia multiple               |
@@ -621,7 +635,7 @@ Si la interface va a tener atributos, éstos deben llevar las palabras reservada
 | La interfaz no contiene constructor                                                  | La clase abstracta contiene constructor                      |
 | Los miembros de la interfaz no pueden ser static                                     | Solo los miembros completamente abstractos pueden ser static |
 
-Puedes usar el sello (Una interfaz es como un sello, rotulo, etiqueta o un contrato, quien lo tenga tendra todos sus metodos si o si) va a ejecutar en metodo
+Puedes usar de parametro una interfaz (Una interfaz es como un sello, rotulo, etiqueta o un contrato, quien lo tenga tendra todos sus metodos si o si) para decir que quien tenga ese "sello" va a ejecutar en metodo.
 
 Ejemplo:
 
@@ -629,7 +643,7 @@ Ejemplo:
         public class SistemaInterno { //es una  clase normal 
             
               public boolean autentica(Autenticable gerente){ // autenticable es una interfaz, el metodo llama a todo aquel que tenga autenticable aplicado,
-              //todo que tenga la eiqueta autenticable podra usar el método autentica
+              //todo que tenga la etiqueta autenticable podra usar el método autentica
                 
               }
           }

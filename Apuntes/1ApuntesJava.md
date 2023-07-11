@@ -17,11 +17,11 @@ Plataforma de Java : Maquina virtual de Java, frankwords, librerias.
 
 En el mundo Java siempre tendremos el mismo archivo "ejecutable" (Bytecode) que será ejecutado por la máquina virtual de Java (JVM) independientemente del sistema operativo estemos usando. De esta forma, no es necesario reescribir el código o adaptarlo a cada sistema operativo. ¡Tenemos un único ejecutable para todas las plataformas!
 
-> 1. Lenguaje Java  (Codigo Java - archivos ***.java***)
-> 2. JAVAC (Java Compiler - ***Java Development***)
-> 3. Byte Code (Archivos ***.class***) resultado de la compilacion
-> 4. JVM (Java Virtual Machine - ***Java Runtime Environment***)
-> 5. Sistema Operativo (SO)
+1. Lenguaje Java  (Codigo Java - archivos ***.java***)
+2. JAVAC (Java Compiler - ***Java Development***)
+3. Byte Code (Archivos ***.class***) resultado de la compilacion
+4. JVM (Java Virtual Machine - ***Java Runtime Environment***)
+5. Sistema Operativo (SO)
 
 </br>
 
@@ -38,7 +38,7 @@ Es el proceso de tranformacion de codigo fuente a codigo ejecutable, el codigo f
 
 **`W.O.R.A (Write Once, Run Everywhere)`**
 
-<img src="/Imagenes/image.png" alt="drawing" width="500"/>
+<img src="../Imagenes/image.png" alt="drawing" width="500"/>
 
 | `Si queremos ejecutar codigo java Utilizar JRE que contienes el JVM y las librerias, para desarrllo el JDK aue tiene un conjunto de herramientas para poder escribir codigo.` |
 
@@ -81,7 +81,7 @@ public class TestConversion {
 }
 ```
 
-<img src="/Imagenes/image-1.png" alt="drawing" width="450"/>
+<img src="../Imagenes/image-1.png" alt="drawing" width="450"/>
 
 ---
 
