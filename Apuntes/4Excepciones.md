@@ -433,7 +433,7 @@ Varios proyectos que se comunican entre sí
 
 ### Excepciones más frecuentes
 
-- **java.lang.NullPointerException** = Hacer referencia a null(algo que no existe)
+- **java.lang.NullPointerException** = Hacer referencia a null(algo que no existe), Se produce cuando se intenta acceder a una variable o método antes de ser definido
 - **java.lang.ArithmeticException: / by zero** = Dividir entre 0, la mayoria de lenguuajes no se pueden dividir entre 0.
 - **java.lang.IllegalStateException** = Cuando la conexion no fue exitosa (la conexion quedo abierta)
 - **NegativeArraySizeException** = Intento de creación de un vector con un número negativo de elementos
@@ -448,6 +448,31 @@ Varios proyectos que se comunican entre sí
 ```
 
 - **IllegalArgumentException** = Lanzado para indicar que a un método se le ha pasado un argumento ilegal o inapropiado. (Por ejemplo cuando ingresan un número negativo)
+- **IncompatibleClassChangeException** = El intento de cambiar una clase afectada por referencias en otros objetos, específicamente cuando esos objetos todavía no han sido recompilados.
+
+- **ClassCastException** = El intento de convertir un objeto a otra clase que no es válida.
+
+```java
+y = (Prueba)x;      // donde x no es de tipo Prueba
+```
+
+- **NegativeArraySizeException** = Puede ocurrir si hay un error aritmético al cambiar el tamaño de un array.
+- **OutOfMemoryException** = *¡No debería producirse nunca!* El intento de crear un objeto con el operador new ha fallado por falta de memoria. Y siempre tendría que haber memoria suficiente porque el garbage collector se encarga de proporcionarla al ir liberando objetos que no se usan y devolviendo memoria al sistema.
+- **NoClassDefFoundException** = Se referenció una clase que el sistema es incapaz de encontrar.
+- **ArrayIndexOutOfBoundsException** = Es la excepción que más frecuentemente se produce. Se genera al intentar acceder a un elemento de un array más allá de los límites definidos inicialmente para ese array.
+- **UnsatisfiedLinkException** = Se hizo el intento de acceder a un método nativo que no existe.
+
+```java
+//Aquí no existe un método a.kk()
+
+class A {
+    native void kk();
+    }
+//y se llama a a.kk(), cuando debería llamar a A.kk().
+```
+
+- **InternalException** = Este error se reserva para eventos que no deberían ocurrir. Por definición, el usuario nunca debería ver este error y esta excepción no debería lanzarse.
+El compilador Java obliga al programador a proporcionar el código de manejo o control de algunas de las excepciones predefinidas por el lenguaje.
 
 ERRORES
 

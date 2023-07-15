@@ -244,8 +244,8 @@ El método estático en Java es un método que pertenece a la clase y no al obje
 - Es un método que pertenece a la clase y no al objeto (instancia)
 - Un método estático solo puede acceder a datos estáticos. No puede acceder a datos no estáticos (variables de instancia)
 - Un método estático puede llamar solo a otros métodos estáticos y no puede invocar un método no estático a partir de él.
-- Un método estático se puede acceder directamente por el nombre de la clase y no necesita ningún objeto
-- Un método estático no puede hacer referencia a “este” o “super” palabras clave de todos modos
+- Sirven para que puedan ser accedidos desde cualquier parte del código (inclusive desde otras clases) sin tener que crear un objeto.
+- Un método estático no puede hacer referencia a `this` o `super` palabras clave de todos modos
 
 </br>
 
@@ -296,11 +296,15 @@ Al usar el modificador de acceso `protected`, los miembros de la clase y las cla
 
 - #### Private
   
-El modificador private en Java es el más restrictivo de todos, básicamente cualquier elemento de una clase que sea privado puede ser accedido únicamente por la misma clase por nada más. Es decir, si por ejemplo, un atributo es privado solo puede ser accedido por lo métodos o constructores de la misma clase. Ninguna otra clase sin importar la relación que tengan podrá tener acceso a ellos.
+El modificador `private` en Java es el más restrictivo de todos, básicamente cualquier elemento de una clase que sea privado puede ser accedido únicamente por la misma clase por nada más. Es decir, si por ejemplo, un atributo es privado solo puede ser accedido por lo métodos o constructores de la misma clase. Ninguna otra clase sin importar la relación que tengan podrá tener acceso a ellos.
+
+- #### default (package private)
+
+El modificador de acceso `default` tambien llamado package private el miembro es visible en la clase y en el package, pero es invisible fuera del package (ni siquiera para los hijos).
 
 - #### Public
 
-El modificador de acceso public es el más permisivo de todos, básicamente public es lo contrario a private en todos los aspectos (lógicamente), esto quiere decir que si un componente de una clase es public, tendremos acceso a él desde cualquier clase o instancia sin importar el paquete o procedencia de ésta.
+El modificador de acceso `public` es el más permisivo de todos, básicamente public es lo contrario a private en todos los aspectos (lógicamente), esto quiere decir que si un componente de una clase es public, tendremos acceso a él desde cualquier clase o instancia sin importar el paquete o procedencia de ésta.
 
 </br>
 
