@@ -156,6 +156,14 @@ Todo string es inmutable
 
 El string nace y nunca es más modificado hasta el momento en el que es recolectado por el garbage collector, osea que nace y muere de la misma forma, nunca mas es modificado o alterado.
 
+```Java
+        .replace() //rewmplaza Caracteres o secuencia de caracteres, recordando en otra variable
+        .substring(1);  //elimina los caracteres antes del indice
+        .toUpperCase() //convierte a Mayusculas
+        .toLowerCase() //conviente a Minuscula
+
+```
+
 ### Interfaz charSequence
 
 El tipo CharSequence es una interfaz que la propia clase String implementa (¡ya que String es una secuencia de caracteres!):
@@ -196,7 +204,7 @@ El constructor por defaul construye un StringBuilder vacío y con una capacidad 
         ///////////////
         ////EJEMPLO////
         StringBuilder builder = new StringBuilder("Ayuda");
-        builder.append("-");
+        builder.append("-"); //adjunta un caracter o strings, conjunto de caracteres
         builder.append("me ");
         builder.append("subi ");
         builder.append("en el ");

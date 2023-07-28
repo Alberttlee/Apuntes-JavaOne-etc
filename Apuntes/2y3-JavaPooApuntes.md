@@ -362,7 +362,7 @@ Upcasting es un tipo de Typecasting de objetos en el que un child object se enca
 
 - **Downcasting**
   
-Upcasting es otro tipo de Typecasting de objetos.
+Downcasting es otro tipo de Typecasting de objetos.
 
 ```java
       //Parent class  

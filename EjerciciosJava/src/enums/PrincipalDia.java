@@ -1,9 +1,9 @@
 package enums;
-public class Principal {
+public class PrincipalDia {
 
     Dia day;
 
-    public Principal(Dia day) {
+    public PrincipalDia(Dia day) {
         this.day = day;
     }
 
@@ -31,15 +31,15 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        Principal firstDay = new Principal(Dia.LUNES);
+        PrincipalDia firstDay = new PrincipalDia(Dia.LUNES);
         firstDay.tellItLikeItIs();
-        Principal thirdDay = new Principal(Dia.MIERCOLES);
+        PrincipalDia thirdDay = new PrincipalDia(Dia.MIERCOLES);
         thirdDay.tellItLikeItIs();
-        Principal fifthDay = new Principal(Dia.VIERNES);
+        PrincipalDia fifthDay = new PrincipalDia(Dia.VIERNES);
         fifthDay.tellItLikeItIs();
-        Principal sixthDay = new Principal(Dia.SABADO);
+        PrincipalDia sixthDay = new PrincipalDia(Dia.SABADO);
         sixthDay.tellItLikeItIs();
-        Principal seventhDay = new Principal(Dia.DOMINGO);
+        PrincipalDia seventhDay = new PrincipalDia(Dia.DOMINGO);
         seventhDay.tellItLikeItIs();
 
 
