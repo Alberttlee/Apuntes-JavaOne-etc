@@ -53,9 +53,14 @@ public class TestOrdenarLista {
         //           cualquier clase hija de Cuenta
         //Comparator <? extend Cuenta> c
 
-        //Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();
-        lista.sort(new OrdenadorPorNumeroCuenta());//sort recibe una implementacion de la interfaz comparator
-
+        //Comparator<Cuenta> comparator = new OrdenadorPorNumeroCuenta();//implementacion de la Interfaz
+        //lista.sort(new OrdenadorPorNumeroCuenta());//sort recibe una implementacion de la interfaz comparator
+        lista.sort(new Comparator<Cuenta>() {
+            @Override
+            public int compare(Cuenta o1, Cuenta o2) {
+                return Integer.compare(o1.getNumero(), o2.getNumero());
+            }
+        });
 
         System.out.println("Despues de ordenar");
         for (Cuenta cuenta : lista){
@@ -73,7 +78,12 @@ public class TestOrdenarLista {
 
 
         //Forma Antigua
-        Collections.sort(lista, new OrdenadorPorNombreTitular());
+        Collections.sort(lista, new Comparator<Cuenta>() {
+            @Override
+            public int compare(Cuenta o1, Cuenta o2) {
+                return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+            }
+        });
 
         System.out.println("Despues de ordenar por nombre titular");
         for (Cuenta cuenta : lista){
@@ -88,6 +98,7 @@ public class TestOrdenarLista {
         }
 
         
+
 
     }
 }

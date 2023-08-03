@@ -8,7 +8,7 @@ Objetos que engloban otros objetos para aplicar encapsulamiento y esconder los a
 
 - Lambda expression
 
-Es un tipo de funcion de funcion que se ejecutan en un contexto separado
+Es un tipo de funcion que se ejecutan en un contexto separado
 
 ## java.lang
 
@@ -214,7 +214,7 @@ Es una estructura de datos de listas anexadas el cual cada nodo tiene referencia
 
 El beneficio principal es que puedo utilizar operaciones de remover elementos o insertar elementos en un especifico orden sin necesidad de recorrer toda la lista
 
-Si tienes muchas operaciones de recorrer toda la lista completa, de imprimir todos los elementos de la lista en todo momento ahí tiene un costo de performans ya que al iterar cada elemento pregunta por su referencia cercana, este lado LinkedList no es recomendada
+Si tienes muchas operaciones de recorrer toda la lista completa, de imprimir todos los elementos de la lista en todo momento ahí tiene un costo de performance ya que al iterar cada elemento pregunta por su referencia cercana, este lado LinkedList no es recomendada
 
 ---
 
@@ -236,7 +236,7 @@ Sin embargo, si necesitamos una estructura de datos más flexible que pueda camb
 
 ### Vector (ya no se usa dificil ver este metodo)
 
-Practicamente hace lo mismo que cualquier lista ya que implelmenta la interface Lista y tiene los mismos métodos, pero el Vector es un ArrayList `Thread safe`. El es un unico objeto para todas las pilas de ejecucion
+Practicamente hace lo mismo que cualquier lista ya que implelmenta la interface Lista y tiene los mismos métodos, pero el Vector es un ArrayList `Thread safe` (que 2 pilas de ejecucion pueden escribir en el pero el vector las enfila en una, primero unsa y después en otra), El es un unico objeto para todas las pilas de ejecucion
 
 Ya no se usa por el hecho de ser **thread safe** tiene mucho impacto con el performance
 
@@ -244,7 +244,88 @@ Ya no se usa por el hecho de ser **thread safe** tiene mucho impacto con el perf
 
 </br>
 
-### Primitivos
+### Generics
+
+Permiten establecer restricciones a nivel de tipo, haciendo que ciertas clases, interfaces o metodos acepten unicamente los tipos estipulados.
+
+Con Java Generics, podemos poner una limitación en los datos que se pueden ingresar en las estructuras de datos.
+
+Cuando se trata con jerarquías los genéricos son invariantes, esto es, dado un Tipo1 subtipo de otro Tipo2, para los genéricos, ``List<Tipo1>`` no es considerado como subtipo ni un supertipo de ``List<Tipo2>`` excepto en el caso trivial de que A y B sean idénticos
+
+Las comprobaciones se realizan en tiempo de compilación, por lo que la compilación fallará si los datos que intentamos ingresar en una estructura de datos no coinciden.
+
+```Java
+
+        ///Clase generica///
+        List<String> listOfStrings = new ArrayList<String>();
+        listOfStrings.add("HelloJava");
+        String message = listOfStrings.get(0);
+```
+
+Creación de su propia clase genérica:
+Puede crear su propia clase genérica, de modo que otros desarrolladores puedan usar su API de forma genérica.
+Ejemplo:
+
+```Java
+        public class Color<T>{
+            private T t;
+        
+            public void set(T t){
+                this.t = t;
+            }
+            public T get(){
+                return t;
+            }
+        }
+```
+
+`T` en el ejemplo anterior se refiere a un tipo genérico. Así que podemos crear códigos de color enteros o códigos de color de cadena.
+Ejemplo:
+
+```Java
+        Color<String> color  = new Color<String>();
+        Color<Integer> colorInt = new Color<Integer>();
+```
+
+</br>
+
+**Tipos acotados**: especificar que tipo es nuestra clase generica `T` (por convencion es la letra `T` pero puede ser culquier otro nombre)
+
+- En este caso es que si o si extiendan de number:
+
+```Java
+/*Especificamos que tipo es nuestra clase generica T,
+en este caso es que si o si extiendan de number*/
+public class Generic<T extends Number> { }
+
+public class Generic<TIPO extends Number> { } //La especificacion del generic puede escribirse lo que sea
+
+
+```
+
+- Podemos usar el generic de atributo o como parametro al igual de que podemos agregar mas generics a usar y hasta retornar.
+
+```Java
+public class Generic<TIPO extends Number> { //para mencionar especificar el tipo de generic
+
+    private final TIPO tipoObjeto; //como atributo
+
+    public Generic(TIPO tipoObjeto) { //en el constructor
+        this.tipoObjeto = tipoObjeto;
+    }
+
+    //en la clase usar generico o mas, retornando segundo
+    public <TIPO, SEGUNDO> SEGUNDO mostrar (TIPO tipoObjeto, SEGUNDO tipoObj) { 
+            System.out.println("Esta es la clase del generico " + tipoObjeto.getClass().getName());
+            return tipoObj;
+        }
+}
+```
+
+</br>
+</br>
+
+#### Primitivos
 
 ```Java
         List<Integer> lista = new ArrayList<Integer>();
@@ -261,7 +342,7 @@ El autoboxing/unboxing simplifica y agiliza en gran medida el código que debe c
 
 </br>
 
-##### **Wrappers:**
+#### **Wrappers:**
 
 Las clases Wrapper en Java o envoltorio permiten envolver un tipo de dato primitivo para tratarlo como si fuera objeto. (Integer, Double...)
 
@@ -356,15 +437,17 @@ El Auto-unboxing es el proceso por el cual el valor de un objeto encapsulado se 
 
 Interfaz que nos ayuda a comparar reescribiendo su metodo `.compare(T o1, T o2)` y junto con el metodo `.sort()` ordenar una lista.
 
-La interfaz Comparator  `Comparator <? extend T> c` se  puede entender así, "Comparator cualquier clase hija de T"
+La interfaz Comparator  `Comparator <? extend T> c` se  puede entender así, "Comparator cualquier clase hija de T", y hay que crear una clase que la implemente.
 
 ```Java
 //////Interfaz  Comparator<T>  (dentro del generic la clase como parametro para comparar)///// 
         .compare(T o1, T o2)
 
         ///EJEMPLO para reordenar cuentas con numeros de cuenta///
+        //creamos una cuenta que implemente Comparator
         class OrdenadorPorNumeroCuenta implements Comparator<Cuenta>{
         
+            //sobreescribimos su metodo compare()
             @Override
             public int compare(Cuenta o1, Cuenta o2) {
             //////Forma Basica//////
@@ -460,14 +543,15 @@ La interfaz Comparator  `Comparator <? extend T> c` se  puede entender así, "Co
 </br>
 </br>
 
-
 #### Ordenaar listas en versiones antiguas de java 1.8 (1.7, 1.6..)
 
 </br>
 
 En sistemas bancarios aun manejan versiones antiguas de Java
 
-- Clase `Collecttions` java.util
+- A través de la interfaz `Comparable` (orden natural)
+
+- Clase `Collecttions` (es una fachada con varios métodos auxiliares para trabajar con colecciones, principalmente listas) de java.util para usar el método `sort()`
 
 ```Java
 Collections.sort(lista);//No compila ya que no hemos definido el orden natural
@@ -482,11 +566,11 @@ Collections.sort(lista);//No compila ya que no hemos definido el orden natural
 
 ```Java
         ///////Implementamos la interface que utiliza la clase Collections/////
-        public abstract class NombreClase implements Comparable<NombreClase>{
+        public abstract class Cuenta implements Comparable<Cuenta>{
 
             //implementamos el metodo de la interface//
             @Override
-            public int compareTo(NombreClase o) {
+            public int compareTo(Cuenta o) {
             //Orden Natural: Numero de agencia o del atributo
             return Integer.compare(this.atributo, o.getAtributo());//atributos por los cuales ordenar
             /// Orden natural: Saldo//
@@ -498,7 +582,7 @@ Collections.sort(lista);//No compila ya que no hemos definido el orden natural
         ///main///    
         public static void main(String[] args){
         
-            Collections.sort(lista);//llamamos a collections.sort y pasamos de parametro la lista
+            Collections.sort(lista);//llamamos a collections.sort y pasamos de parametro la lista sin crear un constructor ya que hicimos el orden natural
     
             Collections.reverse(lista); //Invertir el orden la lista
             
@@ -531,3 +615,246 @@ Para ordenar arrays tampoco es difícil, solo usar el método de ordenación de 
             }
         }
 ```
+
+</br>
+
+### Clase anonima (1.8 -> ...)
+
+Las Clases anónimas en JAVA son una solución rápida para implementar una clase que se va utilizar una vez y de forma inmediata.
+
+- Una clase anónima es una clase interna completa. Por lo tanto, tiene acceso a las variables externas de la clase, incluyendo las variables estáticas y privadas.
+- También tienen algo en común con las clases locales: sólo son visibles dentro del método en el que se definen
+- Otra limitación importante es que las clases anónimas heredan de sus “ancestros”, las clases internas: **una clase anónima no puede contener variables y métodos estáticos.**
+
+**Recomendacion:** "Utiliza clases anónimas si necesitas una clase local de uso puntual"
+
+Clases que nosostros no creamos, las crea directamente Java por debajo ya que una interfaz no puede hacer nada sola, necesita una clase. Llamar a clase (interfaz) para utilizar su metodo y definirlo
+
+```Java
+        //Se genera una clase anonima y se crea un objeto de tipo Comparador
+        Comparator<String> comp = new Comparator<String>() { 
+        
+          @Override
+          public int compare(String s1, String s2) {
+            return s1.compareTo(s2);
+          }
+        };
+
+        ///Otro ejemplo///
+        //el metodo sort utiliza de parametro una lista y crea una clase anonima que utiliza el metodo compare
+        Collections.sort(lista, new Comparator<Cuenta>() {
+                @Override
+                public int compare(Cuenta o1, Cuenta o2) {
+                    return o1.getTitular().getNombre().compareTo(o2.getTitular().getNombre());
+                }
+            });
+
+```
+
+</br>
+
+### Expresion Lambdas
+
+Funciones anonimas, funciones de cierre, Closurse (método anonimo)
+Basada en un lenguaje matemático formal
+Mas expresivo (Con menos código) y elegante
+
+Una expresión ``lambda`` representa el método abstracto de una interfaz funcional.
+
+- **Interfaz Funcional**
+una **interfaz funcional** es aquella que solo tiene un método abstracto, puede tener cualquier cantidad de métodos default o estáticos, pero solamente puede tener un método abstracto. Este método puede ser representado por una expresión lambda.
+
+```Java
+        // Clase principal
+        public class lambdaFunction {
+        
+            // Se declara la interface
+            interface operacion {
+                // el metodo abstracto
+                public double suma(double x, double y);
+            }
+        
+            public static void main(String[] args) {
+                // Expresion lambda
+                operacion l = (x, y) -> x + y;
+                System.out.println(l.suma(8, 30));
+            }
+        }
+```
+
+Una interfaz funcional es aquella que solo tiene un método abstracto, podemos utilizar métodos default, métodos estáticos y métodos heredados de la clase object y declararlos como métodos abstractos.
+
+```Java
+// Clase principal
+        public class lambdaFunction {
+            
+            // Anotacion para declarar la interface
+            @FunctionalInterface
+            interface operacion {
+                // el metodo abstracto
+                public double suma(double x, double y);
+            }
+        
+            public static void main(String[] args) {
+                // Expresion lambda
+                operacion l = (x, y) -> x + y;
+                System.out.println(l.suma(8, 30));
+            }
+        }
+```
+
+Si la interface que estamos declarando contiene la Anotación `@FunctionalInterface` y esta no cumple con los criterios para que sea una interfaz funcional nos dará un error de compilación, esto nos ayuda y es una buena práctica para desarrollar correctamente. Cabe mencionar que  una interface con un solo método abstracto como lo hemos comentado sigue siendo una interfaz funcional aunque no tenga la Anotación @FunctionalInterface.
+
+- Implementan un método definido en una **Interface Funcional**
+
+Una expresión lambda está caracterizada o su sintaxis es:
+
+`parámetro → cuerpo de la expresión lambda`
+
+![Expresion Lamba](../Imagenes/expresionLambda.png)
+
+```java
+        //ciclo for each lambda
+        lista.forEach(cuenta -> System.out.println(cuenta));
+```
+
+</br>
+
+### Maps `HashMap`
+
+Se una `HashMap` para almacenar elementos en pares clave/valor y puedes acceder a estos elementos almacenados en un HashMap utilizando la clave del elemento, que es la única para cada elemento.
+
+- Los elementos se almacenan en pares clave/valor.
+- Los elementos no mantienen ningún orden cuando se agregan. Los datos están desordenados.
+- En caso de que hayan claves duplicadas, la última anulará a las otras.
+- Los tipos de datos se especifican utilizando clases contenedoras en lugar de tipos de datos primitivos.
+
+Para crear y usar un HashMap, primero debes de importar el paquete `java.util.HashMap`
+
+```java
+        // Importamos el paquete "HashMap" 
+        import java.util.HashMap;
+```
+
+Sintaxis para crear un nuevo HashMap:
+
+- ``KeyDataType`` indica el tipo de datos de todas las claves que se almacenarán en el archivo HashMap.
+- ``valueDataType`` indica el tipo de datos de todos los valores que se almacenarán en el HashMap.
+- ``MiHashMap`` es el nombre que le damos al HashMap.
+  
+```Java
+        //sintaxis
+        HashMap<KeyDataType, ValueDataType> miHashMap = HashMap<>();
+    
+        ////Ejemplo////
+        HashMap<Integer, String> ProductoInfo = new HashMap<>();//las claves seran enteras y valores string
+```
+
+Cundo trabajamos con HashMaps, hacemos uso de clases Wrappes y no con tipos primitivos (Integer, Character, Float..., etc)
+
+</br>
+
+- Para **agregar** elementos a un `HashMap` se hace uso del Método `put()`. Toma 2 parametros: la clave y el valor del elemento que se agrega.
+
+```Java
+    .put(1, "Zapatos de Cuero");//clave como numero enteros y strong los valores
+    .put(2, "Casacas Cortaviento");
+
+    .get(2); //get para acceder al valor con clave 2 //Casacas Cortaviento
+        
+    .replace(1, "Zandalias"); //actualizar key, clave que se cambiara y el nuevo valor
+
+    .remove(key) //Eliminar un elemento, toma la clave del elemento a eliminar
+
+    .clear() //elimina todos los elementos del hashMap
+
+    .containsKey() //Devuelve true si si existe una clave especificada en un HashMap
+
+    .containValue() //Devuelve true si existe un valor especificado en un HashMap
+
+    .size() //Devuelve el número de elementos
+
+    .isEmpty() //devuelve true si un HashMap no tiene elementos
+```
+
+- Bucle a través de un HashMap
+  
+Recorrer los elementos de un HashMapcon con un bucle for-each .
+
+``keySet()`` si solo quiere las claves, y use el ``values()`` si solo quiere los valores:
+
+```Java
+        //bucle foreach lambda//
+        hashMap.forEach((ca,so) -> System.out.println(hashMap.keySet())); //imprime las claves
+
+        hashMap.forEach((ca,so) -> System.out.println(hashMap.values())); //imprime los valores
+```
+
+Si Utilizamos una clase como Generico en un HashMap para usarlo como indice, esa clase tiene que tener integrada por fuerza los metodos `equals` y `hashCode`.
+
+```Java
+        
+        public class Indice Hash {
+        
+            private Integer indice; //para usar como indice
+        
+        }
+        //hashCode e equals gerados//
+        
+        
+        public static void main(String[] args){
+        
+ //         Map<IndiceHash, String> hash = new HashMap<>; //tambien podemos usar Interfaz Map
+            HashMap<IndiceHash, String> hash = new HashMap<>;
+            hash.put(new IndiceHash(1), "Juan");
+            hash.put(new IndiceHash(2), "Ana");
+            hash.put(new IndiceHash(3), "Pepe");
+            hash.put(new IndiceHash(4), "Raul");
+        }
+```
+
+</br>
+
+> Usar este tipo de datos como indice es bastante "engorroso" y es preferible usar un dato inmutable como Integer, Double, etc.
+
+</br>
+
+---
+
+</br>
+
+- ¿Cómo puedo acceder (iterar) a todas estas implementaciones de manera uniforme sin conocer los detalles de cada implementación?
+
+En el "cuadro de patrón de diseño" y se llama Iterador.
+
+Un **Iterador** es un objeto que tiene al menos dos métodos: hasNext() y next(). Es decir, puede usarlo para preguntar si hay un próximo elemento y pedir el próximo elemento. La buena noticia es que funciona con TODAS las implementaciones y esa es la gran ventaja.
+
+```Java
+        List<String> nombres = new ArrayList<>();
+        nombres.add("Super Mario");
+        nombres.add("Yoshi"); 
+        nombres.add("Donkey Kong"); 
+        
+        Iterator<String> it = nombres.iterator();
+        
+        while(it.hasNext()) {
+          System.out.println(it.next());
+        }
+```
+
+**``HasNext``** es un Método que devuelve `true` si existe un siguiente elemento a la hora de iterar sobre una colección, se suele utilizar con array que ya tienen un número definitivo. Cuando termina de leer el array la condición es false y sale.
+
+```Java
+        //uso de Iterator a través de un conjunto
+        Set<String> nombres = new HashSet<>();
+        nombres.add("Super Mario");
+        nombres.add("Yoshi"); 
+        nombres.add("Donkey Kong"); 
+        
+        Iterator<String> it = nombres.iterator();
+        
+        while(it.hasNext()) {
+          System.out.println(it.next());
+        }
+```
+

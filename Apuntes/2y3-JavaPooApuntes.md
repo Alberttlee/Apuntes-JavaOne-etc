@@ -537,7 +537,7 @@ El `Override` Java es una función de programación importante que permite a los
 
 Una clase abstracta es como un plano en el que se puede generalizar objetos del mismo, puede que en ocasiones necesitemos crear una clase padre donde únicamente coloquemos la estructura de una abstracción, una estructura muy general, dejando que las clases hijas definan los detalles.
 
-Cuando de crea una clase abstracta con la palabra reservada `abstract` esta no se puede instanciar, simplemente va a servir como superclase a otras clases(herencia).
+Cuando se crea una clase abstracta con la palabra reservada `abstract` esta no se puede instanciar, simplemente va a servir como superclase a otras clases(herencia).
 
 ```Java
         //Ejemplo
