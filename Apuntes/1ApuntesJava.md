@@ -1,10 +1,10 @@
 # JAVA
 
-VRE: Java Runtime Environment
-JDK: Java Devevlopment Kit
-JVM: Java Virtual Machine
+**VRE**: Java Runtime Environment
+**JDK**: Java Devevlopment Kit
+**JVM**: Java Virtual Machine
 
-Plataforma de Java : Maquina virtual de Java, frankwords, librerias.
+Plataforma de Java : Maquina virtual de Java, frameworks, librerias.
 
 - Portable
 - Fácil
@@ -15,11 +15,11 @@ Plataforma de Java : Maquina virtual de Java, frankwords, librerias.
 
 **James Gosling** (Padre de Java)
 
-En el mundo Java siempre tendremos el mismo archivo "ejecutable" (Bytecode) que será ejecutado por la máquina virtual de Java (JVM) independientemente del sistema operativo estemos usando. De esta forma, no es necesario reescribir el código o adaptarlo a cada sistema operativo. ¡Tenemos un único ejecutable para todas las plataformas!
+En el mundo Java siempre tendremos el mismo archivo "ejecutable" (Bytecode) que será ejecutado por la máquina virtual de Java (JVM) independientemente del sistema operativo que estemos usando. De esta forma, no es necesario reescribir el código o adaptarlo a cada sistema operativo. ¡Tenemos un único ejecutable para todas las plataformas!
 
-1. Lenguaje Java  (Codigo Java - archivos ***.java***)
+1. Lenguaje Java  (Codigo Java - archivos ``.java``)
 2. JAVAC (Java Compiler - ***Java Development***)
-3. Byte Code (Archivos ***.class***) resultado de la compilacion
+3. Byte Code (Archivos ``.class``) resultado de la compilacion
 4. JVM (Java Virtual Machine - ***Java Runtime Environment***)
 5. Sistema Operativo (SO)
 
