@@ -6,6 +6,18 @@
 - ``\'`` --------------------- comilla simple
 - ``\"`` --------------------- comilla doble
 
+**Clase scanner** (java.util.Scanner)
+
+Clase Scanner = un tipo ya definido de las clases de Java
+
+```Java
+//Creamos el obejeto Scanner que usa el parametro
+//System.in  y sirve para pedir informacion al usuario por medio del metodo nextLine.
+Scanner cansola = new Scanner(System.in);
+// el metodo nextLine detiene la ejecución de nuetro programa para leer una linea completa de la consola.
+consola.nextLine();
+```
+
 ## Tipos de datos
 
 ### ``byte``, ``short``, ``int`` , ``long``
@@ -75,26 +87,31 @@ Char caracter = "hola".charAt(1)     // devuelve la letra "o" de hola.
 
 ## Operadores
 
-### 1. Operadores aritmeticos
+### Operadores aritmeticos
 
-- suma  ``a + b``
-- resta   `a - b`
-- multiplicacion  `a * b * a`
-- division    `a / b`
-- modulo (residuo entero de la division)      `3 % 2 = 1   (3 / 2)       (a % 2 == 0)`
+- `+` suma  ``a + b``
+- `-` resta   `a - b`
+- `*` multiplicacion  `a * b * a`
+- `/` division    `a / b`
+- `%` modulo (residuo entero de la division)=
+  - Ejemplo del uso del operador residuo: saber si un dato es par:
 
-### 2. Operador de Asignacion
-
-```java
-=           asignacion      a = 3
-+=          composicion suma   a += 1  //a = a + 1   (la variable "a" se va a incrementar en 1)
--=          composicion resta   a -= 2 //a = a - 2
-*=          composicion multiplicacion      a *= 2; //a = a* 2
-/=          composicion division    a /= 2; //a = a / 2
-%=          composicion modulo      a %= 2; //a = a %
+```Java
+        if(n % 2 == 0){ 
+        //si el resultado es verdadero "n" es par, sino es impar
+        }
 ```
 
-### 3. Operadores Unarios
+### Operador de Asignacion
+
+- ``=`` - asignacion      ``a = 3``
+- ``+=`` - composicion suma   ``a += 1  //a = a + 1``   (la variable "a" se va a incrementar en 1)
+- ``-=`` - composicion resta   ``a -= 2 //a = a - 2``
+- ``*=`` - composicion multiplicación ``a*= 2; //a = a*2``
+- ``/=`` - composicion division    ``a /= 2; //a = a / 2``
+- ``%=`` - composicion modulo      ``a %= 2; //a = a %``
+
+### Operadores Unarios
 
 - ``+`` Operador unario suma. Indica un número positivo.
 - ``-`` Operador unario resta. Niega una expresión.     var b = -a
@@ -110,39 +127,38 @@ Char caracter = "hola".charAt(1)     // devuelve la letra "o" de hola.
 - ``–-`` Operador de decremento. Decrementa el valor en 1.
 
 ```Java
-            var i = 2; var j = --g;     //j=1 y i=1
-            var k = 2; var l = k--;     //k=1 y l=2 
+            var i = 2; var j = --g;     //i=1 y j=1 
+            var k = 2; var l = k--;     //k=1 y l=2
 ```
 
-- ``!``           Operador de complemento lógico. Invierte el valor de un booleano    var d = !c //si c era true en la variable d se invierte y c se convierte en false
-                var c = true;    var d = !c;  //c es false
+- ``!`` - Operador de complemento lógico. Invierte el valor de un booleano `var d = !c` si ``c`` era true en la variable ``d`` se invierte y c se convierte en ``false``
 
-### 4. Operadores Igualdad
+```java
+                var c = true;    var d = !c;  //c es false
+```
+
+### Operadores Igualdad
 
 ``==`` - Compara si 2 elementos son iguales. Ejemplo: ``3 == 2`` (el resultado arrojaria false)
 ``!=`` - Diferente. Ejemplo: ``3 != 2`` (el resultado devuelve true)
 
 ``nomCadena.equals(nomCadena)``  Compara contenido de cadenas. Ejem: ``var f = cadena1.equals(cadena2)``
 
-### 5. Operadores Relacionales
+### Operadores Relacionales
 
 Indica si es igual o menor, igual o mayor a otro valor.
 
-```txt
->       mayor que
->=      mayor o igual
-<=      menor o igual
-<       menor que
-```
+``>`` - mayor que
+``>=`` - mayor o igual
+``<=`` - menor o igual
+``<`` - menor que
 
-### 6. Operadores condicionales
+### Operadores condicionales
 
-```txt
-&&      (AND) Solo regresa verdadero si ambas expresiones son "verdadero"
-||      (OR) Regresa verdadero si alguna expresion es verdadera, ambas falsas regresa falso.
-```
+``&&`` - (AND) Solo regresa verdadero si ambas expresiones son "verdadero"
+``||`` - (OR) Regresa verdadero si alguna expresion es verdadera, ambas falsas regresa falso.
 
-### 7. Operador Ternario
+### Operador Ternario
 
 Evaluamos una condición, si la condicon es verdadera asignamos el primer valor `?` , o bien un segundoValor si la condición resulta falsa `:`.
 
@@ -158,11 +174,11 @@ var resultado = (3 > 2) ? "Verdadero" : "Falso" ;
 
 >Recomendable usar cuando son operaciones sencillas, si es mas compleja lo recomendable es usar otro tipo de estructura.
 
-</br>
+---
 
 ## Sentencias de control
 
-### if - if else
+### if - else if
 
 Expresiones booleanas
 
@@ -204,7 +220,7 @@ System.out.println("La estación del año es: " + estacion);
 
 ```
 
-> `else` sirve para romper la comprobacion de los siguientes casos
+> `else` sirve para romper la comprobación de los siguientes casos
 
 </br>
 
@@ -286,19 +302,91 @@ System.out.println("El día de la semana es: " + diaDeLaSemana);
 
 ## Ciclos en Java
 
+El tema de ciclos tiene que ver con la repetición de lineas de código, cuando se trabaja con ciclos lo que se revisa es una **condición**, si la condición es *verdadera* entonces se ejecuta una o más sentencias que al terminar vuelve evaluar de nuevo la condición y mientras la condición sea verdadera se seguira ejecutando la sentencia (un ciclo donde se se ejecuta una cantidad de veces según la condición que se evalua), cuando la condición sea *falsa* entonces se terminar el ciclo.
+
 ### Ciclo While
 
+```java
+//se crea un contador que se utilizara para evaluar la condicion y evitar ciclos infinitos
+        var contador = 0;
+        //mientras contador sea menor que 3 ejecutara las sentencias       
+        while(contador < 3){
+            System.out.println("contador = " + contador);
+            contador++;  //incrementamos en cada vuelta para evaluar
+        }
 
+```
 
+### Do While
 
+Similar al ciclo `While` pero con la diferencia es el orden en que se ejecutan las líneas de código.
 
-
-## Clase scanner (java.util.Scanner)
-
-Clase Scanner = un tipo ya definido de las clases de Java
+Primero tenemos la palabra reservada de `do` con las lineas de código a ejecutar y despues tenemos la condición. En esta estructura por lo menos **se ejecuta una vez la línea de código** y despues se revisa la condición, si es falsa se termina nuestro ciclo pero al menos se ejecuto una vez el ciclo `do while`
 
 ```Java
-Scanner cansola = new Scanner(System.in) //Creamos el obejeto Scanner que usa el parametro
-//System.in  y sirve para pedir informacion al usuario por medio del metodo nextLine.
-consola.nextLine(); // el metodo nextLine detiene la ejecución de nuetro programa para leer una linea completa de la consola.
+        //Sintaxis// 
+        var contador = 0;  //un contador para evaluar
+                
+                do{
+                    //sentencias a realizar
+                }while (contador < 3); //condicion
+        
+        /////Ejemplo/////
+        var contador = 0; 
+        
+        do{
+            System.out.println("contador = " + contador);
+            contador++;
+        }while (contador < 3);
+
 ```
+
+> Si queremos que la condicion se compruebe desde el inico y no ejecute el codigo delciclo usar `While` , en caso de que necesitemos de que se ejecute al menos una vez el bloque de código independiente mente de si la condición es falsa usar `do while`.
+
+### For
+
+Tenemos secciones mas especificas para el manejo de la expresion booleana, el contador y el incremento.
+
+El for tiene 3 partes en su definicion, declaramos la variable contador, despues tenemos la condicon y por ultimo tenemos el incrementador o decrementador, posteriormente colocamos el codigo que realizara dicho ciclo entre llaves `{}`.
+
+```Java
+        //////Sintaxis//////
+        for(var contador; condicion; incrementador){
+        //Sentencias de codigo
+        }
+
+        /////Ejemplo////
+        for (Var contador = 0; contaddor < 3; contaodr ++){
+            //Codigo que realizara
+        } 
+```
+
+#### Palabra `break` y `continue`
+
+- La palabra `break` nos va a permitir romper una cliclo
+- La palabra `continue` lo que va a hacer es que ya no va a ejecutar nada mas de nuestro ciclo, va a omitir las siguientes lineas y se va a la siguiente iteracion.
+
+```Java
+for (int contador = 0; contador < 3; contador++){
+            if(contador % 2 != 0){
+                continue; // ir  a la siguiente iteracion
+            }
+            System.out.println("contador = " + contador);
+        }
+```
+
+#### Etiquetas
+
+Una etiqueta nos va a permitir a las palabras continue o break ir hacia un lugar en especifico de nuestro programa, **No es muy recomendable de usar ni aplicar a proyectos de la vida real** ya que esta programacion se conoce como de tipo `go to` y puedde romper con la lógica de nuestros programas así quee no es convenciente de usar.
+
+```Java
+        inicio: //agregamos la etiqueta
+        for (int contador = 0; contador < 3; contador++){
+            if(contador % 2 != 0){
+                continue inicio; //indicamos a continue ir a la siguiente linea de codigo de la etiqueta, igual con break funciona (ciclos anidados)
+            }
+            System.out.println("contador = " + contador);
+        }
+```
+
+Si tuvieramos ciclos anidados, un ciclo for dentro de otro ciclo for, entonces esto podría ser útil siendo el único caso que podria ser de utilidad, en otros casos no es conveniente indicar este tipo de etiquetas.

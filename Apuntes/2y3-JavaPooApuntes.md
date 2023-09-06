@@ -43,7 +43,7 @@ Representacion de un conjunto de atributos que definen alguna entidad o un tipo.
 - Un objeto es una instancia de una clase donde podemos definir valores para sus `atributos.`
 - Es una plantilla,  o molde que permite construir objetos.
   - Por ejemplo, si tuvieramos un Auto, ésta sería el plano para construir el Objeto (en este caso uno o varios autos).
-- Poseen atributos y métodos.
+- Poseen atributos y métodos los cuales van a extraer lo información del mundo real.
 - No pueden se utilizadas directamente (sino mediante instancias a objetos).
 
 Dentro de una clase se definen los datos y el código que actúa sobre esos datos. El código está contenido en métodos. Debido a que las clases, los objetos y los métodos son fundamentales para Java.
@@ -108,19 +108,18 @@ Ejemplo:
 #### Métodos
 
 Son acciones contenidas en una clase, y definen su __comportamiento.__
-Son toda secuencia de pasos para realizar una cosa o alguna acción
+Son toda secuencia de pasos para realizar una cosa o alguna acción, parte del código que vamos a poder utilizar.
 
 En java hay 2 tipos de métodos
 
-- Que retornan valor (`return`)
-  - La palabra return se usa para devolver un valor desde un método al programa.
-  
+1. Que retornan valor (`return`)
+   - La palabra return se usa para devolver un valor desde un método al programa.
+2. Los que no retornan valor (`void`).
+   - La palabra reservada `void` de Java, se utiliza para indicar que un método no tiene return (valor de retorno).
+
+> La sentencia ``return`` tiene dos usos importantes. Primero, fuerza una salida inmediata de la función en que se encuentra. O sea, hace que la ejecución del programa vuelva al código que llamó a la función. En segundo lugar, se puede utilizar para devolver un valor.
+
 </br>
-
-- Los que no retornan valor (`void`).
-  - La palabra reservada `void` de Java, se utiliza para indicar que un método no tiene return (valor de retorno).
-
-< /br>
 
 La sintaxis y el orden correcto para llamar a um método con Java es:
 

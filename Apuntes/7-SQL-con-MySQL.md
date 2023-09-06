@@ -305,6 +305,8 @@ Atributos de los campos numéricos
 
 ---
 
+`SHOW DATABASES;` - Saber cuantas databases tines de MySQL.
+
 ### Crear una tabla
 
 Ejemplos de Base de datos
@@ -390,6 +392,14 @@ Cada empresa tiene sus propias politicas para la creacion de sus propias bases d
     INSERT INTO tbproductos(  
      producto, nombre, envase, volumen, sabor, precio)
      VALUES ('773912', 'clean', 'Botella pet', '1 litro', 'naranja', 8.01);
+```
+
+- Insertando vario valores en un campo
+
+```SQL
+    INSERT INTO categoria(
+    nombre)
+    VALUES('Muebles'), ('Tecnologia'), ('Cocina'), ('Zapatillas');
 ```
 
 </br>
@@ -531,3 +541,5 @@ SELECT * FROM tbproducto WHERE ENVASE = 'LATA' OR ENVASE = 'BOTELLA PET';
 
 SELECT * FROM tbproducto WHERE (PRECIO_LISTA >= 15 AND PRECIO_LISTA <= 25) OR (ENVASE = 'LATA' OR ENVASE = 'BOTELLA PET');
 ```
+
+DESCRIBE tabla = muestra la estructura de la tabla
