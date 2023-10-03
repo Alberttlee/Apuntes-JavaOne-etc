@@ -2,9 +2,9 @@
 
 - [Spring Boot3](#spring-boot3)
   - [Spring](#spring)
-  - [Spring boot](#spring-boot)
-    - [Cors](#cors)
-      - [Same-origin policy](#same-origin-policy)
+    - [Spring boot](#spring-boot)
+      - [Cors](#cors)
+        - [Same-origin policy](#same-origin-policy)
         - [Habilitación de diferentes orígenes en Spring Boot](#habilitación-de-diferentes-orígenes-en-spring-boot)
   - [Creacion de un proyecto](#creacion-de-un-proyecto)
     - [Configuración](#configuración)
@@ -30,12 +30,13 @@
   - [Request DELETE](#request-delete)
     - [DELETE verdadero](#delete-verdadero)
     - [DELETE Lógico](#delete-lógico)
+    - [Retornos API](#retornos-api)
 
 ## Spring
 
 Spring es un framework para desarrollar aplicaciones en Java, creado a mediados de 2002 por Rod Johnson, que se ha vuelto muy popular y adoptado en todo el mundo debido a su simplicidad y facilidad de integración con otras tecnologías.
 
-## Spring boot
+### Spring boot
 
 Es una herrmanienta o módulo de Spring con el objetivo de agilizar la cración de un proyecto que utilice Spring como Framework
 
@@ -63,11 +64,11 @@ Es una herrmanienta o módulo de Spring con el objetivo de agilizar la cración 
 
 ---
 
-### Cors
+#### Cors
 
 *CORS* es un mecanismo utilizado para agregar encabezados *HTTP* que le indican a los navegadores que permitan que una aplicación web se ejecute en un origen y acceda a los recursos desde un origen diferente. Este tipo de acción se denomina **cross-origin HTTP request**. En la práctica, les dice a los navegadores si se puede acceder o no a un recurso en particular.
 
-#### Same-origin policy
+##### Same-origin policy
 
 Por defecto, una aplicación Front-end, escrita en JavaScript, solo puede acceder a los recursos ubicados en el mismo origen de la solicitud. Esto sucede debido a la política del mismo origen (same-origin policy), que es un mecanismo de seguridad de los navegadores que restringe la forma en que un documento o script de un origen interactúa con los recursos de otro. Esta política tiene como objetivo detener los ataques maliciosos.
 
@@ -185,14 +186,25 @@ Servidor de aplicaciones: En informática, se denomina servidor de aplicaciones 
 
 ## Códigos de respuesta
 
+Los códigos HTTP (o HTTPS) tiene tres dígitos, y el primer dígito representa la clasificación dentro de las cinco categorias posibles.
+
+1. 1XX: Informativo: la solicitud fue aceptada o el proceso aún está en curso;
+2. 2XX: Confirmación: codigos de exito, la acción se completó o se comprendió
+3. 3XX: Redirección: indica que se debe hacer o se debió hacer algo más para completar la solicitud;
+4. 4XX: Error del cliente: nivel usuario/cliente, indica que la solicitud no se puede completar o contiene una sintaxis incorrecta;
+5. 5XX: Error del servidor: el servidor falló al concluir la solicitud.
+
 A cada respuesta que devuelve la aplicación REST se le envía un código que define el estado de la solicitud. Por ejemplo:
 
-- **200** (OK) solicitud cumplida con éxito.
-- **201** (CREADO) objeto o recurso creado con éxito.
-- **204** (SIN CONTENIDO) objeto o recurso eliminado con éxito.
+- **200** (OK) solicitud cumplida con éxito. (PUT)
+- **201** (CREADO) objeto o recurso creado con éxito. (POST)
+- **204** (SIN CONTENIDO) objeto o recurso eliminado con éxito, no retorna nada. (DELETE)
 - **400** (MALA SOLICITUD) ocurrió un error en la solicitud (puede haber numerosas causas), error nivel cliente?
-- **404** (NO ENCONTRADO) ruta o colección no encontrada.
+- **403** (PROHIBIDO) Significa que el servidor entendió la solicitud del cliente, pero se niega a procesarla, ya que el cliente no está autorizado para hacerlo.
+- **404** (NO ENCONTRADO) ruta o colección no encontrada. Puede ser que la aplicación ya no exista, que la URL haya cambiado o que haya ingresado una URL incorrecta.
 - **500** (ERROR INTERNO DEL SERVIDOR), se ha producido algún error del servidor, puede ser cualquier cosa.
+- **503** El servicio al que accede no esta disponible temporalmente.
+  Las causas comunes son un servidor que está fuera de servicio por mantenimiento o sobrecargado. Los **ataques maliciosos como DDoS** causan mucho este problema.
 
 [Lista](https://developer.mozilla.org/es/docs/Web/HTTP/Status) completa del código de cada solicitud.
 
@@ -201,6 +213,8 @@ A cada respuesta que devuelve la aplicación REST se le envía un código que de
 ## REQUEST
 
 EndPoint : un endpoint es una *URL* de una *API* o un backend que se encarga de contestar a una petición
+
+Cuando hablas de Rest Services te refieres a recursos
 
 Body : cuerpo de nuestros Request
 
@@ -334,7 +348,7 @@ Flyway utiliza una nomenclatura, un tipo de padrón para nombrar sus archivos co
 > Las versiones de flyway sirven para crear nuevas migraciones.
 >
 > - Si nos olvidamos detener el sevidor usando migration y dev tool nos saldra un error de que no se puede iniciar la app por fallos de migraciones
->   Para solucionar este problema será necesario acceder a la base de datos de la aplicación y ejecutar el siguiente comando sql: 
+>   Para solucionar este problema será necesario acceder a la base de datos de la aplicación y ejecutar el siguiente comando sql:
 >
 >    ```sql
 >   delete from flyway_schema_history where success = 0
@@ -487,7 +501,7 @@ Oredenar las listas segun los requerimientos del negocio
 
 ---
 >
-> Si en algún momento necesitamos ver la querys que JPA esta ejecutando sobre la base de datos, yo puedo mostrar lo que se esta haciendo 
+> Si en algún momento necesitamos ver la querys que JPA esta ejecutando sobre la base de datos, yo puedo mostrar lo que se esta haciendo
 > ``spring.jpa.show-sql=true`` agregar a *application.properties* del proyecto
 > ``spring.jpa.properties.hibernate.format_sql=true`` para formatear las querys de sql, pero solo para desarrollo, **no produccion** ya que **consume recursos y performance**
 
@@ -584,9 +598,9 @@ Este método requiere de otro campo más en la entidad / tabla: `Private Boolean
     /* ACTUALIZA EL METODO LISATAR (GET) PARA HACER USO DEL PARAMETO "ACTIVE",
     Y UTILIZARLO PARA LISTAR SOLO LOS QUE TEENGA ESA DEFINICION Y LOGRAR UN DELEETE LOGICO */
     @GetMapping
-    public Page<DatosListadoMedico> listadoMedicos(@PageableDefault(size = 10) Pageable paginacion){ //pageable llega desde el cliente va dentro de findAll
+    public ResponseEntity<Page<DatosListadoMedico>> listadoMedicos(@PageableDefault(size = 10) Pageable paginacion){ //pageable llega desde el cliente va dentro de findAll
         //Como paginacion retorna page no necesita la api stream ni mapearlo a una lista
-        return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new); //tenemos paginacion y mapeando lo que necesitamos de DatosListadoMedico
+        return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new)); //tenemos paginacion y mapeando lo que necesitamos de DatosListadoMedico
     }
 
     //DELETE LOGICO
@@ -601,6 +615,95 @@ Este método requiere de otro campo más en la entidad / tabla: `Private Boolean
     //METODO DEL REPOSITORY
     Page<Medico> findByActivoTrue(Pageable paginacion);
 ```
+
+---
+
+### Retornos API
+
+Hay diferentes tipos de retorno que tenemos que aprender a hacer con Rest
+
+Spring nos ayuda a retornar codigo mas personalizados para que nuestras llamadas sean mas personalistas
+
+- Retornar un [*código HTTP*](#códigos-de-respuesta) **204** (no content) DELETE
+  En el método tenemos que retornar un tipo de dato llamado `ResponseEntity`
+
+  ```java
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity eliminarMedico(@PathVariable Long id){ 
+        //DELETE LOGICO
+        Medico medico = medicoRepository.getReferenceById(id);
+        medico.desactivarMedico();
+        return ResponseEntity.noContent().build();// <---- retornando un 204
+    }
+  ```
+
+- Retornar un [*código HTTP*](#códigos-de-respuesta) **200** (ok) PUT
+  No es bueno retornar directamente la entidad de la base de datos, para ello se debe tener un DTO (record) dedicado a retornar la informacion del body deseada
+  `DatosActualizarMedico` y `DatosRespuestaMedico` son DTO, el primero es para guardar los elementos y el segundo lo que va a retornar de la base de datos
+
+  ```JAVA
+    @PutMapping
+    @Transactional
+    public ResponseEntity actualizarMedico(@RequestBody @Valid DatosActualizarMedico datosActualizarMedico){
+        Medico medico = medicoRepository.getReferenceById(datosActualizarMedico.id()); 
+        medico.actualizarMedico(datosActualizarMedico); 
+        return ResponseEntity.ok(new DatosRespuestaMedico(medico.getId(), medico.getNombre(), medico.getEmail(),
+                medico.getTelefono(), medico.getDocumento(),
+                new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento())));
+    }
+  ```
+
+- Devolviendo un [*código HTTP*](#códigos-de-respuesta) **201** (Creado) POST
+  Post debe retornar algo por la especificación que tiene REST, es un estándar.
+  Debe retornar en un header la URL donde tu puedes retornar x que guardaste
+  Con un método GET se puede acceder al xx que acabamos de guardar
+
+  ```java
+    @PostMapping //save tiene el update por eso, no se agrega @Transactional
+    @Transactional
+    public ResponseEntity<DatosRespuestaMedico> registrarMedico(@RequestBody @Valid DatosRegistroMedico datosRegistroMedico,
+                                          UriComponentsBuilder uriComponentsBuilder){
+        Medico medico = medicoRepository.save(new Medico(datosRegistroMedico));
+        DatosRespuestaMedico datosRespuestaMedico = new DatosRespuestaMedico(medico.getId(), medico.getNombre(), medico.getEmail(),
+                medico.getTelefono(), medico.getDocumento(),
+                new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+        URI url = uriComponentsBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        return ResponseEntity.created(url).body(datosRespuestaMedico);
+     }
+  ```
+
+- Devolviendo un [*código HTTP*](#códigos-de-respuesta) **200** GET
+  
+  ```java
+
+    //METODO GET PARA TRAER ELEMENTOS POR URL AL HEADER
+    @GetMapping("/{id}") //dinamico
+    public ResponseEntity<DatosRespuestaMedico> retornaDatosMedico(@PathVariable Long id){ //el valor que llege en el endpoint /{id}
+        //DELETE LOGICO
+        Medico medico = medicoRepository.getReferenceById(id);
+        var datosmedico = new DatosRespuestaMedico(medico.getId(), medico.getNombre(), medico.getEmail(),
+                medico.getTelefono(), medico.getDocumento(),
+                new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+        return ResponseEntity.ok(datosmedico);
+    }
+  ```
+
+```java
+    //METODO GET PARA LISTAR ELEMENTOS
+    @GetMapping
+    public ResponseEntity<Page<DatosListadoMedico>> listadoMedicos(@PageableDefault(size = 10) Pageable paginacion){ //pageable llega desde el cliente va dentro de findAll
+        //Como paginacion retorna page no necesita la api stream ni mapearlo a una lista
+        return ResponseEntity.ok(medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedico::new));
+    }
+```
+
 
 
 
