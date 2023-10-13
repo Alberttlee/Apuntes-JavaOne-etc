@@ -40,7 +40,7 @@ Es el proceso de tranformacion de codigo fuente a codigo ejecutable, el codigo f
 
 <img src="../Imagenes/image.png" alt="drawing" width="500"/>
 
-| `Si queremos ejecutar codigo java Utilizar JRE que contienes el JVM y las librerias, para desarrllo el JDK aue tiene un conjunto de herramientas para poder escribir codigo.` |
+> Si queremos ejecutar codigo java Utilizar JRE que contienes el JVM y las librerias, para desarrllo el JDK aue tiene un conjunto de herramientas para poder escribir codigo.
 
 ---
 
@@ -50,15 +50,13 @@ Es el proceso de tranformacion de codigo fuente a codigo ejecutable, el codigo f
 
 </br>
 
+> ``JAVA es fuertemente tipado, es decir, dado el valor de una variable de un tipo concreto, no se puede usar como si fuera de otro tipo distinto a menos que se haga una conversión``
+
 ---
-
-### ``JAVA es fuertemente tipado, es decir, dado el valor de una variable de un tipo concreto, no se puede usar como si fuera de otro tipo distinto a menos que se haga una conversión``
-
-</br>
 
 ## TIPOS DE VARIABLES
 
-**```Las variables almacenan valores y no referencias.```**
+> Las variables almacenan valores y no referencias.
 
 - byte
 - short
@@ -67,48 +65,50 @@ Es el proceso de tranformacion de codigo fuente a codigo ejecutable, el codigo f
 - float
 - double
 
-### ``byte``, ``short``, ``int`` , ``long``
+- ### Tipo ``byte``, ``short``, ``int`` , ``long``
 
-| Tipo  | Bits    | Valor minimo         | Valor Maximo        | Conversion                              |
-|-------|---------|----------------------|---------------------|-----------------------------------------|
-| byte  | 8bits   | -128                 | = 127               | (byte) 129                              |
-| short | 16 bits | -32768               | 32767               | (short)32768                            |
-| char  | 16 bits | 0                    | 65536 (2 ^ 16)      | (char) 33                               |
-| int   | 32 bits | -2147483648          | 2147483647          | (int)2147483648L ( L = Long )           |
-| long  | 64 bits | -9223372036854775808 | 9223372036854775807 | (long)9223372036854775808F( F = Float ) |
+    | Tipo  | Bits    | Valor minimo         | Valor Maximo        | Conversion                              |
+    |-------|---------|----------------------|---------------------|-----------------------------------------|
+    | byte  | 8bits   | -128                 | = 127               | (byte) 129                              |
+    | short | 16 bits | -32768               | 32767               | (short)32768                            |
+    | char  | 16 bits | 0                    | 65536 (2 ^ 16)      | (char) 33                               |
+    | int   | 32 bits | -2147483648          | 2147483647          | (int)2147483648L ( L = Long )           |
+    | long  | 64 bits | -9223372036854775808 | 9223372036854775807 | (long)9223372036854775808F( F = Float ) |
 
-> El valor de Int es el mas utilizado para ahorrar espacio, es por **default** el usado por java cuando se muestra un numero.
-
-</br>
-
-### ``float`` y ``double``
-
-| Tipo   | Bits   | Valor minimo | Valor Maximo           | Conversion  |
-|--------|--------|--------------|------------------------|-------------|
-| float  | 32bits | 1.4E-45      | 3.4028235E38           | (float)10.0 |
-| Double | 64bits | 9E-324       | 1.7976931348623157E308 | -           |
-
-Las literales de punto flotante simplemente con tener un punto `.` por default java lo cataloga como que ya de tipo ``Double``.
+    > El valor de Int es el mas utilizado para ahorrar espacio, es por **default** el usado por java cuando se muestra un numero.
 
 </br>
 
-### Tipo ``char``
+- ### Tipo ``float`` y ``double``
 
-Para usar un char debe se utiliza comilla simple  ''    (Almacena un un caracter)
-Para usar un codigo unicode usar ``\u + el codigo``
+    | Tipo   | Bits   | Valor minimo | Valor Maximo           | Conversion  |
+    |--------|--------|--------------|------------------------|-------------|
+    | float  | 32bits | 1.4E-45      | 3.4028235E38           | (float)10.0 |
+    | Double | 64bits | 9E-324       | 1.7976931348623157E308 | -           |
+
+    Las literales de punto flotante simplemente con tener un punto `.` por default java lo cataloga como que ya de tipo ``Double``.
+
+</br>
+
+- ### Tipo ``char``
+
+    Para usar un char debe se utiliza comilla simple  ''    (Almacena un un caracter)
+    Para usar un codigo unicode usar ``\u + el codigo``
 
 </br>
 
-### Tipo ``boolean``
+- ### Tipo ``boolean``
 
-Almacenan true o false
+    Almacenan true o false
 
-```Java
-    boolean a = 2 > 4  // true
-    boolean b = 2 < 2  //false
-```
+    ```Java
+        boolean a = 2 > 4  // true
+        boolean b = 2 < 2  //false
+    ```
 
 </br>
+
+---
 
 ## Conversión de Tipos Primitivos en Java (Casting)
 
@@ -136,6 +136,8 @@ Ejemplo `int` a `string`
 String edadTexto = String.valueOf(10)
 ```
 
+</br>
+
 - ``.charAt(intIndex)`` - Para recuperar un caracter de una cadena
 
 Ejemplo:
@@ -147,21 +149,6 @@ Char caracter = "hola".charAt(1)     // devuelve la letra "o" de hola.
 </br>
 
 <img src="../Imagenes/image-1.png" alt="drawing" width="450"/>
-
----
-
-El operador lógico **AND** está representado por los caracteres `&&` y el **OR** por `||`.
-
-Los operadores lógicos deben tener una expresión booleana en los lados izquierdo y derecho.
-
-```java
-if (edad > 18 && edad < 65) {
-
-}
-```
-
-| Los Boolean por defecto son `false` |
-|                -                        |
 
 ---
 
@@ -246,8 +233,21 @@ Indica si es igual o menor, igual o mayor a otro valor.
 
 ### Operadores condicionales
 
-``&&`` - (AND) Solo regresa verdadero si ambas expresiones son "verdadero"
-``||`` - (OR) Regresa verdadero si alguna expresion es verdadera, ambas falsas regresa falso.
+- ``&&`` - (AND) Solo regresa verdadero si ambas expresiones son "verdadero"
+- ``||`` - (OR) Regresa verdadero si alguna expresion es verdadera, ambas falsas regresa falso.
+
+El operador lógico **AND** está representado por los caracteres `&&` y el **OR** por `||`.
+
+Los operadores lógicos deben tener una expresión booleana en los lados izquierdo y derecho.
+
+```java
+if (edad > 18 && edad < 65) {
+
+}
+```
+
+| Los Boolean por defecto son `false` |
+|                -                        |
 
 ### Operador Ternario
 
@@ -323,7 +323,7 @@ Las comprobaciones no tienen que ser de tipo booleano, en este caso pueden ser d
 
 Dependiendo de los casos que estamos comprobando, entonces se ejecuta las sentencias de ese caso, y asi sucesivamente hasta pasar por los casos, tambien es necesario usar la palabra reservada `break` para cuando un coso se evalue y es la correcta el switch se detiene.
 
-- Recomendada cuando estamos creando menús.
+> Recomendada cuando estamos **creando menús**.
 
 ```Java
 switch (expresion) {//valor que queremos comprobar en cada uno de los casos
@@ -401,7 +401,7 @@ El tema de ciclos tiene que ver con la repetición de lineas de código, cuando 
 
 - ### While
 
-El ciclo while acepta dos valores: ´true´ o ´false´. El valor ´true´ mantiene el ciclo en ejecución, cuando cambia a ´false´ este ciclo es finalizado. Esos valores pueden ser resultado de una expresión como `contador <=10`
+El ciclo while acepta dos valores: `true` o `false`. El valor `true` mantiene el ciclo en ejecución, cuando cambia a `false` este ciclo es finalizado. Esos valores pueden ser resultado de una expresión como `contador <=10`
 
 ```java
 contador = 0;
@@ -415,16 +415,15 @@ contador = 0;
 - **Ejemplo**
 
 ```java
-int contador = 0;
 //se crea un contador que se utilizara para evaluar la condicion y evitar ciclos infinitos
-        var contador = 0;
+    var contador = 0;
         //mientras contador sea menor o igual que 10 ejecutara las sentencias 
-        while (contador <= 10){  //Mientras que (conficion)
-            //ejecuta esto
-            System.out.println(contador);
-            //contador = contador + 1;
-            //contador += 1;
-            contador++;  //incrementamos en cada vuelta para evaluar
+    while (contador <= 10){  //Mientras que (conficion)
+        //ejecuta esto
+        System.out.println(contador);
+        //contador = contador + 1;
+        //contador += 1;
+        contador++;  //incrementamos en cada vuelta para evaluar
         }
 ```
 
@@ -474,15 +473,11 @@ El for tiene 3 partes en su definicion, declaramos la variable contador, despues
             for (int contador = 0; contador <= 10; contador++){
                 System.out.println(contador);
             }
-```
-
-```java
+        ///////////////////////////////////
             for(int numero = 3; numero <= 100; numero += 3){
                 System.out.print(numero + " ");
         }
-```
-
-```java
+        ///////////////   USANDO IF DENTRO DEL FOR   /////////////
             for (int i = 1; i < 100; i++ ){
                 if (i % 3 == 0)    {
                     System.out.println(i + " ");
@@ -501,9 +496,11 @@ El for tiene 3 partes en su definicion, declaramos la variable contador, despues
             }
 ```
 
-#### Palabra `break` y `continue`
+---
 
-- La palabra `break` nos va a permitir romper una cliclo
+### Palabra `break` y `continue`
+
+- La palabra `break` nos va a permitir romper una ciclo
 - La palabra `continue` lo que va a hacer es que ya no va a ejecutar nada mas de nuestro ciclo, va a omitir las siguientes lineas y se va a la siguiente iteracion.
 
 ```Java
@@ -515,7 +512,7 @@ for (int contador = 0; contador < 3; contador++){
         }
 ```
 
-#### Etiquetas
+### Etiquetas
 
 Una etiqueta nos va a permitir a las palabras continue o break ir hacia un lugar en especifico de nuestro programa, **No es muy recomendable de usar ni aplicar a proyectos de la vida real** ya que esta programacion se conoce como de tipo `go to` y puede romper con la lógica de nuestros programas así quee no es convenciente de usar.
 

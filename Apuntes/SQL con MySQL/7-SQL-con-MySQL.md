@@ -32,7 +32,7 @@ En los 80´s surgieron otras empresas que usaron SEQUEL para trabajar con base d
 
 Fue desarrollado en la década de los noventas por los suecos David Axmark, Allan Larsson y el Irlandes Michael Windenius. El nombre de MYSQL viene de la Hija de Michael "My" y SQL por el lenguaje.
 
-Vieron la necesidad de hallar una interfaz compatible con la demanda del mercado, por lo que desarrollaron su propia API de consulta y base de datos utilizando c++, Y así nacio MYSQL (la idea es crear sun software de open source, un software que tenga escalibilidad robussta emision critica, que nunca se caiga).
+Vieron la necesidad de hallar una interfaz compatible con la demanda del mercado, por lo que desarrollaron su propia API de consulta y base de datos utilizando c++, Y así nacio MYSQL (la idea es crear un software de open source, un software que tenga escalabilidad robusta emisión critica, que nunca se caiga).
 
 En 2008 vendieron la empresa a Sun Microsystems(Creadores de Java) por 1Billon de dolares
 En 2009 Oracle compro a Sun Microsystems y se quedó con MySQL y con Java.
@@ -41,10 +41,10 @@ En 2009 Oracle compro a Sun Microsystems y se quedó con MySQL y con Java.
 
 - **Servidor Robusto**. Multi-access (Siempre al aire, escalabilidad, emision critica), Data Integrity (Mantener la Integridad de los datos), Transaction control (Control de transacciones, acceso a tablas).
 - **Portabilidad**. Windows/Linux. Acceso a datos usando DotNET, Phyton, Java, JS, PHP...
-- **Muti-threads**. Facilta la Integracion con HardWare + Escalabilidad. Tiene que ver con el Kernel de sistema Operativo, para aumentar la velocidad de procesamiento, permite la integracion de Hardware con la plataforma, si un servidor tiene un "x" numero de procesadores MySQL  permite usar toda esa capacidad de almacenamiento para hacer esa base de datos mas rápida.
+- **Muti-threads**. Facilta la Integracion con HardWare + Escalabilidad. Tiene que ver con el Kernel de sistema Operativo, para aumentar la velocidad de procesamiento, permite la integracion de Hardware con la plataforma, si un servidor tiene un "x" numero de procesadores MySQL  permite usar toda esa capacidad de procesamiento para hacer esa base de datos mas rápida.
 - **Almacenamiento**. Dependiendo de las necesidades puede priorizar la Velocidad de almacenamiento o el volumen de almacenamiento.
 - **Velocidad** +Rapidos, e-commerce, AWS/BigQuery/Azure tienen instancias en MySQL. Es una de las bases de datos veloces en el mercado, de las mas rápidas.
-- **Seguridad**. Diversida de mecanismos, como el acceso de usuarios a especifica informacion
+- **Seguridad**. Diversidad de mecanismos para mentener la seguridad en la base de datos, como el acceso de usuarios a especifica informacion
 - **Capacidad**. Hasta 65000TB, (una gran corporacion no llega a usar tanto).
 - **Aplicabilidad**. Es uno de los preferidos por desarrolladores de Internet/desktop/corporativo.
 - **Logs**. Registra todo. Recuperacion facilmente de informacion, Réplica de servidores (Se puede replicar en diverentes lugares, como si en un pais se cae un servidor y otro pais que cuente con la informacion puede suplir esta demanda sin afectar su desempeño).

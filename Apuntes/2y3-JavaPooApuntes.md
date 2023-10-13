@@ -58,11 +58,13 @@ __Atributo:__ En orientacion a objeto llamamos atributo a las caracteristicas de
 
 La abstracción describe el proceso mediante el cual se da forma a una entidad de la realidad tangible para ponerla en un código que maneje pautas basadas en estas características junto con funciones que representen este tipo de clases, la abstracción en concreto es representada dentro del lenguaje de programación Java por medio de atributos, métodos y clases, a través de los cuales se va a dar forma a un código determinado.
 
+> El el proceso de Abstraer la informacion del mundo real en forma de codigo que es representada por medio de atributos, métodos y clases
+
 </br>
 
 ### Instancias
 
-Las instancias son la materialización de una clase, es decir, son objetos concretos que tienen su propio estado (los valores de sus atributos) y su propio comportamiento (los métodos que pueden ejecutar)
+Las instancias son la __materialización de una clase__, es decir, son objetos concretos que tienen su propio estado (los valores de sus atributos) y su propio comportamiento (los métodos que pueden ejecutar)
 
 </br>
 
@@ -107,8 +109,8 @@ Ejemplo:
 
 #### Métodos
 
-Son acciones contenidas en una clase, y definen su __comportamiento.__
-Son toda secuencia de pasos para realizar una cosa o alguna acción, parte del código que vamos a poder utilizar.
+Son acciones contenidas en una clase, y definen su comportamiento.
+Son toda secuencia de pasos para realizar una cosa o alguna acción, __parte del código que vamos a poder utilizar__.
 
 En java hay 2 tipos de métodos
 
@@ -138,11 +140,21 @@ La sintaxis y el orden correcto para llamar a um método con Java es:
 
 </br>
 
-##### Parametros
+- Parametros
 
 Acción necesaria que ese método necesaria usar
 
-- Los parámetros son variables que se utilizan para pasar información a funciones o métodos cuando son llamados.
+> Los parámetros son variables que se utilizan para pasar información a funciones o métodos cuando son llamados.
+
+- Argumentos
+
+Son el tipo de dato que usamos cuando definimos nuestro método
+
+```java
+    public int sumarConArgumentos(int arg1, int arg2){
+        //Cuerpo del método
+    }    
+```
 
 ---
 

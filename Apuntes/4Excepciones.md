@@ -52,10 +52,36 @@ Salida en consola:
                     Fin do main
 ```
 
+</br>
+
 **Stack** (pila): Es un conjunto de abjetos apilados uno sobre otro.
 
 - Se utiliza para hacer filas, stacks de memoria
   - Ejemplo: el browser, cuando ves una pagina... esta se acumula una sobre otra y cuando retrocedes elimina una, y así sucesivamente.
+
+</br>
+
+### Memoria Stack y memoria Heap en Java
+
+Los programadores ya saben que un programa usa la memoria RAM para almacenar la información (del programa) mientras se está ejecutando. Al interior de Java existen dos clasificaciones para almacenar los valores del programa, estas son conocidas como memoria `Stack` y memoria `Heap`.
+
+1. La memoria **STACK**
+   Se usa para almacenar las **variables locales** (cuyo ámbito de acción está limitada solo a la función donde se declaró) y también las llamadas de funciones en Java, referencias de objetos. Las variables almacenadas en esta memoria por lo general tienen un periodo de vida corto, viven hasta que terminen la función o método en el que se están ejecutando (en Ram?).
+
+   </br>
+
+2. La memoria **Heap**
+   Es utilizada para **almacenar los objetos** (incluyendo sus atributos) y este objeto tendra referencia en memoria, puede ser un valor hexadecimal (0x777) que sera asignada a una varible (en memoria *stack*), los objetos almacenados en este espacio de memoria normalmente tienen un tiempo de duración más prolongado que los almacenados en Stack.
+
+```java
+        Automovil auto01 = new Automovil();
+        int var01 = 50;
+        String var02 = "";
+```
+
+![JavaheapStack](../Imagenes/java_memoria_stack_heap_01.png)
+
+---
 
 ## Excepciones
 
@@ -221,21 +247,7 @@ El `throw` es como decir aquí explotas con lo que tenias y lo que viene despues
 
 ```
 
-##### Memoria Stack y memoria Heap en Java
-
-Los programadores ya saben que un programa usa la memoria RAM para almacenar la información (del programa) mientras se está ejecutando. Al interior de Java existen dos clasificaciones para almacenar los valores del programa, estas son conocidas como memoria `Stack` y memoria `Heap`.
-
-1. La memoria `Stack` se usa para almacenar las variables locales (cuyo ámbito de acción está limitada solo a la función donde se declaró) y también las llamadas de funciones en Java. Las variables almacenadas en esta memoria por lo general tienen un periodo de vida corto, viven hasta que  terminen la función o método en el que se están ejecutando.
-
-2. Por otro lado, la memoria ``Heap`` es utilizada para almacenar los objetos (incluyendo sus atributos), los objetos almacenados en este espacio de memoria normalmente tienen un tiempo de duración más prolongado que los almacenados en Stack.
-
-```java
-        Automovil auto01 = new Automovil();
-        int var01 = 50;
-        String var02 = "";
-```
-
-![JavaheapStack](../Imagenes/java_memoria_stack_heap_01.png)
+---
 
 ##### Serializacion en Java
 
@@ -247,7 +259,8 @@ Para que un objeto sea serializable basta con que implemente la interfaz Seriali
 
 Para sabeer mas sobre [serializacion.](https://chuidiang.org/index.php?title=Serializaci%C3%B3n_de_objetos_en_java&redirect=no#:~:text=Para%20que%20un%20programa%20java,del%20fichero%2C....)
 
-___
+---
+
 Cosas vistas hasta ahora:
 
 - Tenemos el stack
@@ -258,7 +271,7 @@ Cosas vistas hasta ahora:
 - Puedo crear mis propias excepciones
 - No puedo extenderlas directamente de throwable porque throwable divide entre dos grandes grupos que son `Exception` y `Error`
 
-___
+---
 
 #### throw y throws
 
