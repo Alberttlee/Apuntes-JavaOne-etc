@@ -2,23 +2,23 @@
 
 Estructuras de datos, arreglos de datos, agrupacion
 
-- Wrappers
-
+__Wrappers__
 Objetos que engloban otros objetos para aplicar encapsulamiento y esconder los atributos propias de cada objeto
 
-- Lambda expression
-
+__Lambda expression__
 Es un tipo de funcion que se ejecutan en un contexto separado
 
-## java.lang
+</br>
+
+- __java.lang__
 
 Donde estan las principales clases de java como la clase `Object`, la clase `String`
 
-## java-io
+- __java-io__
 
 Clases para leer archivos, string de datos (nivel intermedio)
 
-## java.util
+- __java.util__
 
 Utilitarios, estructuras de datos, son objetos que nos van a simplificar la vida para realizar diferentes operaciones
 
@@ -27,14 +27,13 @@ Utilitarios, estructuras de datos, son objetos que nos van a simplificar la vida
 ## Arreglos (Array)
 
 Es una estructura de datos utilizada para almacenar datos del mismo tipo (Ejem: Valores primitivos o referencias). Los arreglos almacenan sus elementos en ubicaciones de memoria contiguas
-Los array usan corchetes `[]` sintaticamente, tienen un tamaño fijo.
+Los array usan corchetes `[]` sintaticamente y tienen un tamaño fijo.
 
-En Java los arreglos son objetos. Todos los métodos pueden ser invocados
-
-```Java
-        String[] nombres = new String[5]; //llamarlo asi indicando el tamaño del string
-
-```
+> En Java __los arreglos son objetos__. Todos los métodos pueden ser invocados, tenemos que especificar la cantidad de elementos que va a almacenar y una vez indicada este arreglo ya no puede crecer, no podemos agregar elementos de manera dinamica si ya llegamos al límite de los elementos declarados.
+>
+>```Java
+>    String[] nombres = new String[5]; // Indicando el tamaño
+>```
 
 Los arrays en Java se enumeran desde elemento 0, que sería el primer elemento, hasta el tamaño -1 que sería el último elemento, Es decir, si tenemos un array de diez elementos, el primer elemento sería el cero y el último elemento sería el nueve.
 
@@ -42,7 +41,7 @@ Los arrays en Java se enumeran desde elemento 0, que sería el primer elemento, 
         int[] intArray = {2,5,46,12,34}; //Forma para inicializar un array definiendo sus valores
 ```
 
-### Indice
+- Indice
 
 El índice es la posición que tiene cada sección de mi "caja", los índices cominzan con 0
 
@@ -51,20 +50,49 @@ El índice es la posición que tiene cada sección de mi "caja", los índices co
         numeros[2] = 30;  //Indicamos con el indice en que posicion colocar el numero 30 
 ```
 
-- Las matrices tienen un atributo  `.lenght` para conocer la cantidad de espacios que tenemos en el array
+Las matrices tienen un atributo  `.lenght` para conocer la cantidad de espacios que tenemos en el array
 
 ```Java
-        .lenght // con este metodo conocemos la cantidad de espacios en nuestro array
+    .lenght // conocemos la cantidad de espacios en nuestro array
 
-        ///Ejemplo///
-
-        int longitud = numeros.lenght;
-        System.out.println(longitud); ///salida: 5
+    ///Ejemplo///
+    int longitud = numeros.lenght;
+    System.out.println(longitud); ///salida: 5
 ```
 
 </br>
 
-### Type cast
+- ### Matrices
+
+Es un arreglo de arreglos, El primer arreglo controla los __renglones__ de la matriz y posteriormente tenemos un arreglo que controla las __columnas__.
+
+`TipoValor[renglón][columna] = int[][]`
+
+```java
+    int[][] edades = new int[3][2]; //Matriz de 3 renglones y 2 columnas
+    
+    String[][] frutas = {{"Naranja", "Limon"}, {"Fresa", "Zarzamora"}}; //inicializando  matrices
+```
+
+- Iterar una matriz
+
+```java
+    for (int ren = 0; ren < edades.length; ren++){
+            for (int col = 0; col < edades[ren].length; col++){
+                System.out.println("edades " + ren + "-" + col + ": " + edades[ren][col]);
+            }
+        }
+
+    for(int r = 0; r< frutas.length; r++){
+            for (int c = 0; c< frutas[r].length; c++){
+                System.out.println("frutas " + r + "-" + c + ": " + frutas[r][c]);
+            }
+        }
+```
+
+</br>
+
+- ### Type cast
 
 El cast explícito solo funciona si es posible, pero hay casos en los que el compilador sabe que un cast es imposible y luego ni compila ni con type cast.
 
@@ -87,15 +115,14 @@ ejemplo: `Designer` y `Gerente` extienden de Funcionario
 
 </br>
 
-#### `ClassCastException`
+- #### `ClassCastException`
 
 Cuando falla el `type cast`, podemos recibir un ClassCastException.
-
-- Lanzado para indicar que el código ha intentado convertir un objeto en una subclase de la que no es una instancia.
+Es lanzado para indicar que el código ha intentado convertir un objeto en una subclase de la que no es una instancia.
 
 </br>
 
-> [Consejo]
+> [!Consejo]
 > Puedes crear métodos para agregar u obtener valores de un array (referencias si hablamos de objetos), auque hay otro tipo de arrays que ya los tienen, los `ArrayList`. Puedes hacerlo mediante una clase
 
 ```Java
@@ -125,6 +152,8 @@ Cuando falla el `type cast`, podemos recibir un ClassCastException.
         }
 ```
 
+---
+
 ## Java.util.List (Interface List)
 
 ### ArrayList
@@ -146,7 +175,7 @@ Si la tratamos como objeto, se inicializa asi:
 
 </br>
 
-**Lista a partir de otra**.
+- __Lista a partir de otra__
 
 Otra forma de inicializar una lista es basada en otra que es muy común en el día a día. Para esto, ArrayList tiene un constructor más que recibe la lista base:
 
@@ -210,7 +239,7 @@ Forzamos a ser de un tipo (usando generics con el operador diamond `<>`):
 
 ### LinkedList (Lista anexada)
 
-Es una estructura de datos de listas anexadas el cual cada nodo tiene referencias a su proximo elemento, **no es un array** pero si es una lista. Un conjunto de objetos en el que cada uno tiene referencias al siguiente nodo (conjunto de objetos) y al nodo anterior
+Es una estructura de datos de listas anexadas el cual cada nodo tiene referencias a su proximo elemento, __no es un array__ pero si es una lista. Un conjunto de objetos en el que cada uno tiene referencias al siguiente nodo (conjunto de objetos) y al nodo anterior
 
 El beneficio principal es que puedo utilizar operaciones de remover elementos o insertar elementos en un especifico orden sin necesidad de recorrer toda la lista
 
@@ -238,7 +267,7 @@ Sin embargo, si necesitamos una estructura de datos más flexible que pueda camb
 
 Practicamente hace lo mismo que cualquier lista ya que implelmenta la interface Lista y tiene los mismos métodos, pero el Vector es un ArrayList `Thread safe` (que 2 pilas de ejecucion pueden escribir en el pero el vector las enfila en una, primero unsa y después en otra), El es un unico objeto para todas las pilas de ejecucion
 
-Ya no se usa por el hecho de ser **thread safe** tiene mucho impacto con el performance
+Ya no se usa por el hecho de ser __thread safe__ tiene mucho impacto con el performance
 
 ![Alt text](../Imagenes/collection.png)
 
@@ -338,7 +367,7 @@ public class Generic<TIPO extends Number> { //para mencionar especificar el tipo
 El autoboxing/unboxing simplifica y agiliza en gran medida el código que debe convertir los tipos primitivos en objetos, y viceversa. Debido a que tales situaciones se encuentran con frecuencia en el código de Java, los beneficios del autoboxing/unboxing afectan a casi todos los programadores de Java.
 
 - El proceso de encapsular un valor dentro de un objeto se llama **boxing**
-- El proceso de extraer un valor de un contenedor de tipo se denomina **unboxing**.
+- El proceso de extraer un valor de un contenedor de tipo se denomina __unboxing__.
 
 </br>
 
@@ -662,7 +691,7 @@ Mas expresivo (Con menos código) y elegante
 Una expresión ``lambda`` representa el método abstracto de una interfaz funcional.
 
 - **Interfaz Funcional**
-una **interfaz funcional** es aquella que solo tiene un método abstracto, puede tener cualquier cantidad de métodos default o estáticos, pero solamente puede tener un método abstracto. Este método puede ser representado por una expresión lambda.
+Una __interfaz funcional__ es aquella que solo tiene un método abstracto, puede tener cualquier cantidad de métodos default o estáticos, pero solamente puede tener un método abstracto. Este método puede ser representado por una expresión lambda.
 
 ```Java
         // Clase principal
@@ -754,7 +783,7 @@ Cundo trabajamos con HashMaps, hacemos uso de clases Wrappes y no con tipos prim
 
 </br>
 
-- Para **agregar** elementos a un `HashMap` se hace uso del Método `put()`. Toma 2 parametros: la clave y el valor del elemento que se agrega.
+- Para __agregar__ elementos a un `HashMap` se hace uso del Método `put()`. Toma 2 parametros: la clave y el valor del elemento que se agrega.
 
 ```Java
     .put(1, "Zapatos de Cuero");//clave como numero enteros y strong los valores
@@ -827,7 +856,7 @@ Si Utilizamos una clase como Generico en un HashMap para usarlo como indice, esa
 
 En el "cuadro de patrón de diseño" y se llama Iterador.
 
-Un **Iterador** es un objeto que tiene al menos dos métodos: hasNext() y next(). Es decir, puede usarlo para preguntar si hay un próximo elemento y pedir el próximo elemento. La buena noticia es que funciona con TODAS las implementaciones y esa es la gran ventaja.
+Un __Iterador__ es un objeto que tiene al menos dos métodos: hasNext() y next(). Es decir, puede usarlo para preguntar si hay un próximo elemento y pedir el próximo elemento. La buena noticia es que funciona con TODAS las implementaciones y esa es la gran ventaja.
 
 ```Java
         List<String> nombres = new ArrayList<>();
@@ -857,4 +886,3 @@ Un **Iterador** es un objeto que tiene al menos dos métodos: hasNext() y next()
           System.out.println(it.next());
         }
 ```
-

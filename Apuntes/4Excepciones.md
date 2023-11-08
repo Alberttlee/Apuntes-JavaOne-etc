@@ -66,7 +66,7 @@ Salida en consola:
 Los programadores ya saben que un programa usa la memoria RAM para almacenar la información (del programa) mientras se está ejecutando. Al interior de Java existen dos clasificaciones para almacenar los valores del programa, estas son conocidas como memoria `Stack` y memoria `Heap`.
 
 1. La memoria **STACK**
-   Se usa para almacenar las **variables locales** (cuyo ámbito de acción está limitada solo a la función donde se declaró) y también las llamadas de funciones en Java, referencias de objetos. Las variables almacenadas en esta memoria por lo general tienen un periodo de vida corto, viven hasta que terminen la función o método en el que se están ejecutando (en Ram?).
+   Se usa para almacenar las **variables locales** (cuyo ámbito de acción está limitada solo a la función donde se declaró) y también las llamadas de funciones en Java, referencias de objetos. Las variables almacenadas en esta memoria por lo general tienen un periodo de vida corto, viven hasta que terminen la función o método en el que se están ejecutando.
 
    </br>
 
@@ -414,7 +414,7 @@ El bloque finally se crea automáticamente.
 
 Resumiendolo mucho podemos decir que la recursividad en programación Java es la capacidad de crear funciones que llamen a otras funciones. De esta manera se evita el uso de bucles u otros iteradores. Una tecnica que permite crear instrucciones que se repitan "n" número de veces, permite usar el uso de estructuras de datos repetitivas
 
-___
+---
 
 ## ¿Que aprendimos?
 
@@ -431,7 +431,7 @@ ___
 - Cuando hay un bloque `finally`, el bloque de catch es opcional
 - Que el bloque `finally` se ejecuta siempre, sin o con excepción
   
-___
+---
 
 >Todo lo que sea control de errores y validaciones, por buenas practicas va al inicio del método.
 

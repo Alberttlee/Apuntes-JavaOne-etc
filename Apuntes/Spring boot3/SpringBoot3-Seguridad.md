@@ -401,7 +401,7 @@ Llamados a nuesto JWT en nuestro controller
     }
 ```
 
-> [!Importan]
+> [!Important]
 > Si en todo tu estandar de API el estandar es consumir DTO y devolver DTO eso debe aplicar para todos los métodos que estas usando, para codigo mas limpio y mas entendible para la aplicacion cliente
 
 - En ``application.properties`` decimos cual es el seccret por uso de *Variables de ambiente*

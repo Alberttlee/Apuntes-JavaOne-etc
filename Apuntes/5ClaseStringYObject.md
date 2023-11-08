@@ -34,7 +34,7 @@ Los nombres de los paquetes se corresponden con nombre de directorios en el sist
 
 </br>
 
-Todo archivo que este dentro de un paquete y quiera acceder a otro archivo que esta dentro de otro paquete, este tiene que conocer el nombre especifivo/direccion de ese archivo.
+Todo archivo que este dentro de un paquete y quiera acceder a otro archivo que esta dentro de otro paquete, este tiene que conocer el nombre especifico/direccion de ese archivo.
 
 En java si una clase esta dentro de un paquete su nombre de direccion esta compuesto por:
 `nombrePaquete.nombreDeLaClase`, `package.className`
@@ -259,15 +259,92 @@ El método toString debería devolver información sobre el estado del objeto. E
 
 ___
 
- Enums
+## Enumeraciones (ENUM)
 
 Son los tipos de datos especiales donde una variable puede contener el valor de un grupo de constantes predefinidas.
 
-Basicamente es un conjunto de constantes que se las asocia a un tipo `enum`. En lugar de `class`
-utilizamos la palabra clave `enum` y entre llaves definimos las constantes.
+Basicamente **es un conjunto de constantes que se las asocia a un tipo `enum`.** En lugar de `class`
+utilizamos la palabra clave `enum` y entre llaves definimos las constantes, por regla es escrita en mayúsculas.
 
-Es como un array solo que esta en una clase tipo enum.
+¿Cuando usar un tipo enums?
 
-**¿Cuando usar un tipo enums**
 Cundo quieras representar un conjunto fijo de constantes, incluye enumeraciones de tipo natural como planetas del sistema solar y conjunto de datos en donde se conoce el valor de cada constante en tiempo de compilación como las opciones de un menú, los colores o los dias de la semana.
 
+```java
+
+//Sintaxis y como usar
+    public enum Continentes {
+
+        AFRICA(53),
+        EUROPA(46),
+        ASIA(59),
+        AMERICA(34),
+        OCEANIA(44);
+    
+        private final int paises;
+    
+        Continentes(int paises) {
+            this.paises = paises;
+        }
+    
+        public int getPaises() {
+            return this.paises;
+        }
+}
+```
+
+> Para acceder a los datos de la enumeracion, basta con solo escriber el nombre y el valor que deseamos, sin instanciar.
+
+</br>
+
+## Bloques de Codigo en java
+
+El bloque de inicialización es un fragmento de código de ejecución fijo que no acepta ningún parámetro. Por lo tanto, si un fragmento de código de inicialización es el mismo para todos los objetos y no necesita recibir ningún parámetro, puede colocar este fragmento de código de inicialización en el bloque de inicialización.
+
+Se ejecutan antes del constroctor, antes que los bloques de inicialización ordinarios y se mandan a llamar antes de nuestro constructor de nuestra clase.
+
+```java
+///  Tenemos una clase  ///
+public class Persona {
+
+    private final int idPersona;
+    private static int contadorPersonas;
+
+}
+```
+
+- **Bloques de inicialización estáticos**
+
+El bloque de inicialización definido con el modificador estático se denomina **bloque de inicialización estático**, también denominado **bloque de inicialización de clase** (No se puede usar el operador `this`).
+
+El bloque de inicialización normal es inicializar el objeto, y el bloque de inicialización de clase es **inicializar la clase**.
+
+Se va a ejecutar condo se carga por primera vez en memoria lal clase.
+
+```java
+static{
+        ////   Se va a ejecutar la primera vez cuando se carga la clase   ////
+        System.out.println("Ejecición bloque estatico");
+        ++Persona.contadorPersonas;
+        //idPersona = 10; No se puede agregar contextos estaticos a uno que es estatico
+    }
+
+```
+
+</br>
+
+- **Bloques de inicialización no estáticos**
+
+Se le conoce como contexto no dinámico, se crea caundo inicializamos un nuevo objeto e que inicializa el objeto.
+
+Se puede usar el operador `this`.
+
+```java
+    {  ///   Se va a ejecutar cada vez que creemos un objeto de nuestra clase   ///
+        System.out.println("Ejecucion bloque no estatico");
+         this.idPersona = Persona.contadorPersonas++;
+    }
+```
+
+> [!Note]
+> Cuando Java crea un objeto, primero asigna memoria y luego instala el orden de inicialización para especificar el valor inicial, los bloques de inicialización estática siempre se ejecutan antes que los bloques de inicialización ordinarios
