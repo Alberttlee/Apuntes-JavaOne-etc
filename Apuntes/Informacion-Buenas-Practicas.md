@@ -2,6 +2,7 @@
 
 ## 1. Buenas prácticas
 
+- Sobreescribir los métodos `toString`. En general, existen los métodos equals, toString y hashCode para sobreescribir. (Fundamentales de la clase Object)
 - El uso de `this` para señalar que un atributo o un método es de la propia clase, teniendo mayor legibilidad en el código.
   Solo la palabra `this` dentro de una clase hace referencia referencia al objeto que se esta ejecutando osea, la referencia de la memoria (insertando `toString` definimos el estado del objeto en cualquier momento, modificamos que queremos mostrar)
 
@@ -18,11 +19,20 @@
   ```
 
 - Paquete `domain` las clases que resuelven el problema que estamos analizando, clases de dominio.
-- Sobreescribir los métodos `toString`
+- Si utilizamos la clase `Scanner`, Al momento de ser intanciada, este obejeto se encuentra a la escucha de todo lo que sucede en consola, es decir que se encuentra monitoriandolo. El monitoreo empieza desde que la instancia es creada hasta que el programa finaliza, por lo que esto consume recursos por lo que es de buena practica que nosotros indiquemos que el `Scanner` deje de monitorear una vez sepamos que ya no leeremos datos de la consola, para ello se crea `sc.close();` y una vez ejecutado el método no podremos obtener valores de la consola.
+- Como buena practica se debe agregar la anotacion `@FunctionalInterface` a las interfaces Funcionales (Que solo tienen un unico metodo abstracto y solo uno) para que el compilador pueda realizar ciertas validaciones sobre la interfaz
+
+---
+---
+
+## 2. Consejos
+
+- Programar orientado a interfaces para desacoplar el codigo más adelante (en revisión)
+- En java tratar de usar Listas
 
 ---
 
-## 2. Datos
+## 3. Datos
 
 1. Instancia, reservar espacio de la memoria para un objeto.
 2. El compilador de Java de manera implicita al terminar un método `void` internamente agrega ``return ;``
@@ -37,7 +47,7 @@
     > Siempre esta precente la palabra `return` de manera implicita o explicita en nuestro método, podemos mandar llamar varias veces en nuestro método pero la primera anulara a las démas (útil de manera condicionada, en metodos como validadores, etc).
 
 3. El paquete `java.lang` se importa de manera implicita a todos nuestros programas en java, por lo que podemos usar cualquier clase que provenga de ella sin importarla.
-4. En una un archivo solamente podemos tener una clase de tipo `public`, todas las demas clases ya no se les va a agregar este modificador de acceso ya que solamente se va a poder utilizar dentro de la clase o dentro del paquete.
+4. En un archivo solamente podemos tener una clase de tipo `public`, todas las demas clases ya no se les va a agregar este modificador de acceso ya que solamente se va a poder utilizar dentro de la clase o dentro del paquete.
 5. FQN (Full Qualified Name, Nombre completamente calidicado) es el nombre completo de la clase, que consta del nombre del paquete y el nombre de la clase. FQN = ``Nombre del paquete. Nombre de clase simple``
 6. La palabra `final` en variables evita cambiar el valor que almacena, en objetos no permite cambiar la referencia, en métodos y sobre todo cuando se trabaja el concepto de herencia la palabra final evita que los metodos en la clase hija modifiquen el comportamiento de un método en la clase padre y si agregamos la palabra final en clases evita que creemos clases hijas de la clase que hemos marcado como final. Otra caracteristica normalmente cuando se trabaja con variables se combina con el modificador de acceso _static_ para convertir una variable en una constante, es decir que no podemos modificar el valor pero ademas poder accerder a lavariable directamente poniendo el nombre de la clase, por ejemplo `Math.PI` donde toda la clase Math sus atributos y métodos son *final y static*
 
@@ -69,11 +79,23 @@
         }
     ```
 
-1. Enum: Los enumeradores por default son elementos públicos, estáticos y finales. Todos los elementos son constantes.
+9. Enum: Los enumeradores por default son elementos públicos, estáticos y finales. Todos los elementos son constantes.
+10. Cuando Java crea un objeto, primero asigna memoria y luego instala el orden de inicialización para especificar el valor inicial, los bloques de inicialización estática siempre se ejecutan antes que los bloques de inicialización ordinarios [Bloques de inicialización](#bloques-de-codigo-en-java)
+11. Operador ternario: `resultado = (condicion) ? valor1 : valor2;` - ¿condición? `?` valor si es verdadero `:` valor si es falso
+12. Java no admite la herencia múltiple, pero una clase puede implementar la "n" cantidad de interfaces que necesite. 
+    La herencia entre interfaces también se puede, para ello se utiliza la palabra reservada `extends` y segido de la interfaz.
+
+    ```java
+        public interface InterfazA extends InterazB {
+        }
+    ```
+
+    > Los métodos en la Intefaz padre no seran implementados en el aintefaz hija, los métodos serán implementados hasta que hasta que una clase implemente la interfaz hija.
 
 ---
+---
 
-## 3. Información importante
+## 4. Información importante
 
 ### null
 
@@ -156,27 +178,27 @@ A partir de Java 7, el Java String Pool se almacena en el espacio Heap , que es 
 ### Contexto estático y dinamico
 
 - Contexto estático
-  Cuando trabajamos con las clases, carga de clases. No puede acceder al contexto dinámico. Se asocia a la clase y no a los objetos, usando la palabra reservada `static`, puede llamar solo metodos estaticos o usar atributos estaticos.
+Cuando trabajamos con las clases, carga de clases. No puede acceder al contexto dinámico. Se asocia a la clase y no a los objetos, usando la palabra reservada `static`, puede llamar solo metodos estaticos o usar atributos estaticos.
   - Sintaxis: `NombreClase.atributoEstatico;`
 
 </br>
 
 - Contexto dinámico (this)
-  Cunado tenemos la clase cargada en memoria y empezamos a crear objetos de la clase, carga de objetos. Si puede acceder al contexto estático debido a que como ya creamos los objetos, se asocia a los objetos cuando no usamos la palabra reservada `static`
+Cuando tenemos la clase cargada en memoria y empezamos a crear objetos de la clase, carga de objetos. Si puede acceder al contexto estático debido a que como ya creamos los objetos, se asocia a los objetos cuando no usamos la palabra reservada `static`
 
 </br>
 
 ### Concurrencia y paralelismo
 
 - Concurrencia
-  La concurrencia es, en esencia, el poder realizar múltiples cosas en el mismo tiempo, pero, no específicamente en paralelo.
-  Cuando se ejecutan tareas de forma concurrente a estas se les asigna un x periodo de tiempo antes de cambiar de tarea, será en ese periodo en el cual se inicie, continúe, o se complete la tarea
+La concurrencia es, en esencia, el poder realizar múltiples cosas en el mismo tiempo, pero, no específicamente en paralelo.
+Cuando se ejecutan tareas de forma concurrente a estas se les asigna un x periodo de tiempo antes de cambiar de tarea, será en ese periodo en el cual se inicie, continúe, o se complete la tarea
 
   </br>
 
 - Paralelismo
-  El paralelismo es el poder de ejecutar dos o más acciones de forma simultánea, en lugar de concurrentemente.
-  Si ejecutamos tareas en paralelo, las tareas se realizarán de forma simultánea, comenzarán y finalizarán sin interrupciones.
+El paralelismo es el poder de ejecutar dos o más acciones de forma simultánea, en lugar de concurrentemente.
+Si ejecutamos tareas en paralelo, las tareas se realizarán de forma simultánea, comenzarán y finalizarán sin interrupciones.
 
 > Phyton: Si deseamos implementar concurrencia en nuestros programas una muy buena idea será utilzar Threads, por otro lado, si deseamos implementar paralelismos optaremos por procesos.
 
@@ -209,3 +231,75 @@ public class Empleado extends Persona{
 }
 ```
 
+</br>
+
+## Bloques de Codigo en java
+
+El bloque de inicialización es un fragmento de código de ejecución fijo que no acepta ningún parámetro. Por lo tanto, si un fragmento de código de inicialización es el mismo para todos los objetos y no necesita recibir ningún parámetro, puede colocar este fragmento de código de inicialización en el bloque de inicialización.
+
+Se ejecutan antes del constroctor, antes que los bloques de inicialización ordinarios y se mandan a llamar antes de nuestro constructor de nuestra clase.
+
+```java
+///  Tenemos una clase  ///
+public class Persona {
+
+    private final int idPersona;
+    private static int contadorPersonas;
+
+}
+```
+
+- **Bloques de inicialización estáticos**
+
+El bloque de inicialización definido con el modificador estático se denomina __bloque de inicialización estático__, también denominado __bloque de inicialización de clase__ (No se puede usar el operador `this`).
+
+El bloque de inicialización normal es inicializar el objeto, y el bloque de inicialización de clase es __inicializar la clase__.
+
+Se va a ejecutar condo se carga por primera vez en memoria lal clase.
+
+```java
+static{
+        ////   Se va a ejecutar la primera vez cuando se carga la clase   ////
+        System.out.println("Ejecición bloque estatico");
+        ++Persona.contadorPersonas;
+        //idPersona = 10; No se puede agregar contextos estaticos a uno que es estatico
+    }
+
+```
+
+</br>
+
+- **Bloques de inicialización no estáticos**
+
+Se le conoce como contexto no dinámico, se crea caundo inicializamos un nuevo objeto e que inicializa el objeto.
+
+Se puede usar el operador `this`.
+
+```java
+    {  ///   Se va a ejecutar cada vez que creemos un objeto de nuestra clase   ///
+        System.out.println("Ejecucion bloque no estatico");
+         this.idPersona = Persona.contadorPersonas++;
+    }
+```
+
+> [!Important]
+> Cuando Java crea un objeto, primero asigna memoria y luego instala el orden de inicialización para especificar el valor inicial, los bloques de inicialización estática siempre se ejecutan antes que los bloques de inicialización ordinarios. Los bloques de inicialización se escriben y definen antes que los constructores.
+
+</br>
+
+## Unboxing y Autounboxing
+
+- **Unboxing:**
+El Auto-unboxing es el proceso por el cual el valor de un objeto encapsulado se extrae automáticamente (desencapsula) de una envoltura de tipo cuando se necesita su valor.
+
+- **AutoBoxing:**
+Autoboxing es el proceso por el cual un tipo primitivo es automáticamente encapsulado (boxed) en su envoltura (wrapper) de tipo equivalente cuando se necesita un objeto de ese tipo. No hay necesidad de obtener explícitamente un objeto
+
+```java
+Integer entero = 10; //Autoboxing, envolviendo un primitivo a wrapper (object)
+ System.out.println("entero = " + entero);
+System.out.println("entero.toString() = " + entero.doubleValue());
+
+int i = entero; //Unboxing, wrapper a primitivo
+System.out.println("i = " + i);
+```
