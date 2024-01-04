@@ -43,7 +43,7 @@ Es una herrmanienta o módulo de Spring con el objetivo de agilizar la cración 
 ---
 
 - **Spring Boot 3**
-  - Compatibilida con Jav 17
+  - Compatibilidad con Jav 17
   - Migracion de especificaciones Java EE a Jakarta EE
   - Compatibilidad con imágenes nativas
 

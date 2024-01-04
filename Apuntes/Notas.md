@@ -1,4 +1,6 @@
-# Importante
+# Mis notas
+
+Inforamación, notas, conceptos importantes, consejos, etc.
 
 ## 1. Buenas prácticas
 
@@ -22,6 +24,10 @@
 - Si utilizamos la clase `Scanner`, Al momento de ser intanciada, este obejeto se encuentra a la escucha de todo lo que sucede en consola, es decir que se encuentra monitoriandolo. El monitoreo empieza desde que la instancia es creada hasta que el programa finaliza, por lo que esto consume recursos por lo que es de buena practica que nosotros indiquemos que el `Scanner` deje de monitorear una vez sepamos que ya no leeremos datos de la consola, para ello se crea `sc.close();` y una vez ejecutado el método no podremos obtener valores de la consola.
 - Como buena practica se debe agregar la anotacion `@FunctionalInterface` a las interfaces Funcionales (Que solo tienen un unico metodo abstracto y solo uno) para que el compilador pueda realizar ciertas validaciones sobre la interfaz
 
+SQL
+
+- Una prática muy usual en base de datos es trabajar con [transacciones](/Apuntes/SQL%20con%20MySQL/3.-Comandos-DML.md#Commit-y-Rollback)
+
 ---
 ---
 
@@ -29,6 +35,15 @@
 
 - Programar orientado a interfaces para desacoplar el codigo más adelante (en revisión)
 - En java tratar de usar Listas
+
+SQL
+
+- En el desarrollo de sistemas es muy común `TIMESTAMP..` ya que siempre que creemos un registro es valioso el día y la hora en la que fue creada, puede estar oculto pero es bueno que exista para un control de registro
+
+    ```sql
+    /*Campo*/
+    FECHA_CREACION TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),`
+    ```
 
 ---
 
@@ -82,7 +97,7 @@
 9. Enum: Los enumeradores por default son elementos públicos, estáticos y finales. Todos los elementos son constantes.
 10. Cuando Java crea un objeto, primero asigna memoria y luego instala el orden de inicialización para especificar el valor inicial, los bloques de inicialización estática siempre se ejecutan antes que los bloques de inicialización ordinarios [Bloques de inicialización](#bloques-de-codigo-en-java)
 11. Operador ternario: `resultado = (condicion) ? valor1 : valor2;` - ¿condición? `?` valor si es verdadero `:` valor si es falso
-12. Java no admite la herencia múltiple, pero una clase puede implementar la "n" cantidad de interfaces que necesite. 
+12. Java no admite la herencia múltiple, pero una clase puede implementar la "n" cantidad de interfaces que necesite.
     La herencia entre interfaces también se puede, para ello se utiliza la palabra reservada `extends` y segido de la interfaz.
 
     ```java
@@ -91,11 +106,12 @@
     ```
 
     > Los métodos en la Intefaz padre no seran implementados en el aintefaz hija, los métodos serán implementados hasta que hasta que una clase implemente la interfaz hija.
+13. Cuando declaras una variable string, su valor por defecto es NULL. Atributos/propiedades de objetos se inicializan por defecto a null, __las variables locales no se inicalizan y el compilador da error__ si intentas usar un valor de una variable sin inicializar
 
 ---
 ---
 
-## 4. Información importante
+## 4. Información importante y conceptos
 
 ### null
 
@@ -188,22 +204,6 @@ Cuando tenemos la clase cargada en memoria y empezamos a crear objetos de la cla
 
 </br>
 
-### Concurrencia y paralelismo
-
-- Concurrencia
-La concurrencia es, en esencia, el poder realizar múltiples cosas en el mismo tiempo, pero, no específicamente en paralelo.
-Cuando se ejecutan tareas de forma concurrente a estas se les asigna un x periodo de tiempo antes de cambiar de tarea, será en ese periodo en el cual se inicie, continúe, o se complete la tarea
-
-  </br>
-
-- Paralelismo
-El paralelismo es el poder de ejecutar dos o más acciones de forma simultánea, en lugar de concurrentemente.
-Si ejecutamos tareas en paralelo, las tareas se realizarán de forma simultánea, comenzarán y finalizarán sin interrupciones.
-
-> Phyton: Si deseamos implementar concurrencia en nuestros programas una muy buena idea será utilzar Threads, por otro lado, si deseamos implementar paralelismos optaremos por procesos.
-
-</br>
-
 ### Constructores
 
 Los constructores en java de manera implicita llaman al constructor vacio de la clase padre `super()`, si no especificamos una herencia de una clase por defecto toda clase hereda de Object.
@@ -233,7 +233,7 @@ public class Empleado extends Persona{
 
 </br>
 
-## Bloques de Codigo en java
+### Bloques de Codigo en java
 
 El bloque de inicialización es un fragmento de código de ejecución fijo que no acepta ningún parámetro. Por lo tanto, si un fragmento de código de inicialización es el mismo para todos los objetos y no necesita recibir ningún parámetro, puede colocar este fragmento de código de inicialización en el bloque de inicialización.
 
@@ -287,7 +287,7 @@ Se puede usar el operador `this`.
 
 </br>
 
-## Unboxing y Autounboxing
+### Unboxing y Autounboxing
 
 - **Unboxing:**
 El Auto-unboxing es el proceso por el cual el valor de un objeto encapsulado se extrae automáticamente (desencapsula) de una envoltura de tipo cuando se necesita su valor.
@@ -303,3 +303,54 @@ System.out.println("entero.toString() = " + entero.doubleValue());
 int i = entero; //Unboxing, wrapper a primitivo
 System.out.println("i = " + i);
 ```
+
+---
+
+</br>
+
+## 5. Conceptos
+
+### Concurrencia y paralelismo
+
+- Concurrencia
+La concurrencia es, en esencia, el poder realizar múltiples cosas en el mismo tiempo, pero, no específicamente en paralelo.
+Cuando se ejecutan tareas de forma concurrente a estas se les asigna un x periodo de tiempo antes de cambiar de tarea, será en ese periodo en el cual se inicie, continúe, o se complete la tarea
+
+  </br>
+
+- Paralelismo
+El paralelismo es el poder de ejecutar dos o más acciones de forma simultánea, en lugar de concurrentemente.
+Si ejecutamos tareas en paralelo, las tareas se realizarán de forma simultánea, comenzarán y finalizarán sin interrupciones.
+
+> Phyton: Si deseamos implementar concurrencia en nuestros programas una muy buena idea será utilzar Threads, por otro lado, si deseamos implementar paralelismos optaremos por procesos.
+
+</br>
+
+SQL
+
+- Cursor (SQL)
+Un cursor es un objeto de acceso a datos que se puede utilizar para recorrer el conjunto de filas de una tabla o insertar nuevas filas en una tabla.
+Un cursor es una estructura implementada en MYSQL que permite la interacción línea por línea mediante un orden determinado
+
+</br>
+
+- Transacción:
+Unidad lógica de procesamiento que busca __preservar la integridad y consistencia de los datos__.
+
+</br>
+
+- Trigger:
+Es un __procedimiento almacenado en la base de datos que se ejecuta automáticamente cada vez que ocurre un evento especial en el servidor de la base de datos__.
+
+</br>
+
+- Stored Procedures
+**Programas estructurados** usando el lenguaje nativo propio de SQL saliendose un poco de pádron/estandar ANSI que nos permite utilizar if, while, for, case, etc. propios de cada base de datos saliendose del plano secuencial permitiendo desvios del programa.
+Los procedimientos almacenados de MySQL son declaraciones SQL precompiladas almacenadas en una base de datos . Son subrutinas que contienen un nombre, una lista de parámetros y sentencias SQL.
+
+</br>
+
+- Handler:
+En general, en los lenguajes de programación un handler es el encargado de recibir datos, manejarlos y realizar una acción como respuesta
+
+---
