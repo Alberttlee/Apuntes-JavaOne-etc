@@ -45,6 +45,11 @@ SQL
     FECHA_CREACION TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),`
     ```
 
+- Trabajar con `STORED PROCEDURES` al utilizar `TRIGGERS` de modo que cada que se haga una actualización en nuestra base de datos [delete, update o isert] entonces nuestro trigger llame un stored procedure que traiga todas esas funciones
+  - Trabajar así **facilita el mantenimiento** ya que genera más ventaja aplicar `stored procedures` a los `triggers` ya que si cambiamos las reglas de negocio, basta cambiarlas solamente en el `stored procedures` sin necesidad de hacer alteraciones al interior de los `triggers`.
+</br>
+- Usar índices en nuestras campos de igualdades, de igual manera en la condición de filtro implementar un índice. Mejor desempeño de nuestras consultas.
+
 ---
 
 ## 3. Datos
@@ -312,45 +317,64 @@ System.out.println("i = " + i);
 
 ### Concurrencia y paralelismo
 
-- Concurrencia
+- **Concurrencia**
 La concurrencia es, en esencia, el poder realizar múltiples cosas en el mismo tiempo, pero, no específicamente en paralelo.
 Cuando se ejecutan tareas de forma concurrente a estas se les asigna un x periodo de tiempo antes de cambiar de tarea, será en ese periodo en el cual se inicie, continúe, o se complete la tarea
+</br>
 
-  </br>
-
-- Paralelismo
+- **Paralelismo**
 El paralelismo es el poder de ejecutar dos o más acciones de forma simultánea, en lugar de concurrentemente.
 Si ejecutamos tareas en paralelo, las tareas se realizarán de forma simultánea, comenzarán y finalizarán sin interrupciones.
 
 > Phyton: Si deseamos implementar concurrencia en nuestros programas una muy buena idea será utilzar Threads, por otro lado, si deseamos implementar paralelismos optaremos por procesos.
 
+---
+
+- **SSH**
+SSH son las siglas de **Secure Shell** y es un protocolo de red destinado principalmente a la conexión con máquinas a las que accedemos por línea de comandos. En otras palabras, con SSH podemos conectarnos con servidores usando la red Internet como vía para las comunicaciones.
 </br>
 
 SQL
 
-- Cursor (SQL)
+- **Redundancia de datos**
+La redundancia de datos ocurre cuando la misma pieza de datos existe en dos (o más) lugares separados. La redundancia puede ocurrir accidentalmente (por ejemplo, cuando los datos duplicados de alguna manera terminan en el mismo base de datos) o deliberadamente/con intención (p. ej., cuando las empresas crean backups). La redundancia de datos deliberada garantiza que una empresa pueda continuar operando sin interrupción si algo compromete el conjunto de datos original.
+</br>
+
+- **Cursor** / **índice** (SQL)
 Un cursor es un objeto de acceso a datos que se puede utilizar para recorrer el conjunto de filas de una tabla o insertar nuevas filas en una tabla.
 Un cursor es una estructura implementada en MYSQL que permite la interacción línea por línea mediante un orden determinado
-
+  - Entidad de la db que facilitan la búsquedad de datos dentro de la tabla (Diccionario). Un índice es un puntero a una fila de una determinada tabla de nuestra base de datos. Un puntero no es más que una referencia que asocia el valor de una determinada columna (o el conjunto de valores de una serie de columnas) con las filas que contienen ese valor (o valores) en las columnas que componen el puntero.
 </br>
 
-- Transacción:
-Unidad lógica de procesamiento que busca __preservar la integridad y consistencia de los datos__.
-
+- **Controlador Raid**
+Una controladora RAID es un dispositivo de hardware en servidores de alto nivel o un programa de software en servidores de bajo nivel que se utilizan para administrar unidades de disco duro (HDD) o unidades de estado sólido (SSD) en un servidor o un arreglo de almacenamiento.
+Es una tecnología que combina varios discos duros para almacenar datos.
+Existen varias formas en que también se conocen como niveles RAID para almacenar datos para rendimiento y redundancia(de tener operando tus sistemas sin interrupción).
 </br>
 
-- Trigger:
-Es un __procedimiento almacenado en la base de datos que se ejecuta automáticamente cada vez que ocurre un evento especial en el servidor de la base de datos__.
-
+- **Transacción**:
+Unidad lógica de procesamiento que busca __preservar la integridad y consistencia de los datos__. Unidades de trabajo lógicas que consta de una o más operaciones que deben ser todas correctas o se deben borrar de una base de datos para mantener la integridad lógica de los datos
 </br>
 
-- Stored Procedures
+    Las _bases de datos transaccionales_ son bases de datos optimizadas para ejecutar sistemas de producción, pueden utilizarse desde sitios web hasta bancos y pequeños negocios. Se caracterizan por permitir llevar a cabo un gran número de transacciones cortas en línea, haciendo posible un procesamiento de consultas muy rápido, manteniendo la integridad de los datos en entornos de acceso múltiple y garantizando unos niveles de efectividad muy elevados. Una base de datos de este tipo cuenta con información actual y detallada.
+</br>
+
+- **Trigger**:
+Es un procedimiento almacenado en la base de datos que **se ejecuta automáticamente cada vez que ocurre un evento especial** en el servidor de la base de datos.
+</br>
+
+- **Stored Procedures**
 **Programas estructurados** usando el lenguaje nativo propio de SQL saliendose un poco de pádron/estandar ANSI que nos permite utilizar if, while, for, case, etc. propios de cada base de datos saliendose del plano secuencial permitiendo desvios del programa.
 Los procedimientos almacenados de MySQL son declaraciones SQL precompiladas almacenadas en una base de datos . Son subrutinas que contienen un nombre, una lista de parámetros y sentencias SQL.
-
 </br>
 
-- Handler:
-En general, en los lenguajes de programación un handler es el encargado de recibir datos, manejarlos y realizar una acción como respuesta
+- **Handler**:
+En general, en los lenguajes de programación un handler es el encargado de recibir datos, manejarlos y realizar una acción como respuesta. Rutina de software que realiza una determinada tarea. Por ejemplo, cuando se detecta un error, se llama a un manipulador de error para recuperarse de esa condición.
+</br>
+
+- **Buffer**
+El buffer es un espacio temporal de memoria física el cual se usa para almacenar información mientras se envía de un lado a otro.
+Los buffers son tan comunes por su función, que es paliar la diferencia de velocidad de transmisión o procesamiento entre dos dispositivos o procesos.
+Un buffer suele utilizarse para transmitir información en sistemas en los cuales la velocidad a la que se obtiene o se manda la información es diferente a la velocidad a la que se procesa, y no deben confundirse con la memoria cache, ya que tienen funciones muy diferentes: los buffers almacenan información sin mantenerla más tiempo del que tarda en mandarse, pero la memoria cache almacena información durante un periodo de tiempo para que diferentes procesos o aplicaciones puedan acceder a ella rápidamente.
 
 ---
